@@ -25,7 +25,7 @@ const CardGrid = ({
 }) => {
   return (
     <div className="flex flex-col gap-2">
-      <Link href={`details/123`} className=" aspect-square bg-color-secondary rounded-2xl"></Link>
+      <Link href={`details/123`} className=" aspect-square bg-color-placeholder rounded-2xl"></Link>
       <div>
         <p className="font-semibold text-base">{name}</p>
         <p className="font-semibold text-base">Rp {price}</p>
