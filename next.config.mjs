@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      { hostname: "image-optimizer-reg.production.sephora-asia.net" },
+    ],
+  },
+};
 
 export default nextConfig;
