@@ -1,8 +1,9 @@
+"use client"
 import { CaretLeft, DotsThree, Heart } from "@phosphor-icons/react";
 import { FunctionComponent } from "react";
 
 interface HeaderNavProps {
-    liked: boolean
+    liked?: boolean
     model: "dot" | "like"
     title?: string
 }

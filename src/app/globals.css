@@ -5,9 +5,13 @@
 body {
 }
 
-.covers, .covers2{
+.covers, .covers2, .covers3{
   min-height: 100svh;
   padding: 1rem;
   padding-top: 1.75rem;
   padding-bottom: 5.75rem;
+}
+
+.covers3{
+  padding-bottom: 0rem;
 }

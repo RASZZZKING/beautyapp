@@ -1,4 +1,3 @@
-"use client";
 import DescDetail from "@/components/DescDetail";
 import ImageDetail from "@/components/ImageDetail";
 import SelecetColor from "@/components/SelectColor";
@@ -66,7 +65,6 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
         />
         <SelectSize data={sizes} />
       </div>
-
       <div className="bottom-0 fixed w-full h-20 bg-color-gray border-opacity-30 border-color-placeholder border-t rounded-xl px-6 py-4">
         <div className=" flex justify-between w-full h-full items-center">
           <div className="flex gap-2 justify-center items-center">

@@ -1,3 +1,4 @@
+"use client"
 import { Dot } from "@phosphor-icons/react";
 import { FunctionComponent, useState } from "react";
 
