@@ -1,5 +1,5 @@
 "use client"
-import { Basket, ClockCounterClockwise, Ticket } from "@phosphor-icons/react";
+import { Basket, ChatCentered, ChatCenteredDots, ChatTeardrop, ChatTeardropDots, ClockCounterClockwise, DotsThree, Ticket } from "@phosphor-icons/react";
 import { FunctionComponent } from "react";
 
 interface HeaderUserProps {}
@@ -7,8 +7,8 @@ interface HeaderUserProps {}
 const HeaderUser: FunctionComponent<HeaderUserProps> = () => {
   return (
     <div className="flex justify-between">
-      <ClockCounterClockwise size={32} />
-      <Ticket size={32} />
+      <ChatCentered size={32} />
+      <DotsThree size={32} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import {
   Basket,
   Heart,
@@ -9,30 +9,63 @@ import {
   UserCircle,
 } from "@phosphor-icons/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 interface NavbarProps {}
 
+const dataIcon = [
+  {
+    href: "/",
+    icon: <House size={32} />
+  },
+  {
+    href: "/details/123",
+    icon:  <MagnifyingGlass size={26} />
+  },
+  {
+    href: "/cart",
+    icon:  <Basket size={26} />
+  },
+  {
+    href: "/like",
+    icon:  <Heart size={26} />
+  },
+  {
+    href: "/user",
+    icon:  <User size={26} />
+  },
+]
+
 const Navbar: FunctionComponent<NavbarProps> = () => {
+  const path = usePathname()
   return (
-    <div className="bg-color-primary w-full h-16 bottom-0 fixed px-3 rounded-t">
+    <div className="bg-color-primary shadow-inner w-full h-16 bottom-0 fixed px-3 rounded-t">
       <div className=" rounded h-full flex justify-evenly items-center">
-        <Link href={"/"} className="hover:bg-color-gray rounded-full p-2">
-          <House size={32} />
-        </Link>
-        <Link href={"/details/123"} className="hover:bg-color-gray rounded-full p-2">
-          <MagnifyingGlass size={32} />
-        </Link>
-        <Link href={"/cart"} className="hover:bg-color-gray rounded-full p-2">
-          <Basket size={32} />
-        </Link>
-        <Link href={"/like"} className="hover:bg-color-gray rounded-full p-2">
-          <Heart size={32} />
-        </Link>
-        <Link href={"/user"} className="hover:bg-color-gray rounded-full p-2">
-          <User size={32} />
-        </Link>
+          {dataIcon.map((cb,index)=>{
+            return(
+              <IconsNav href={cb.href} active={path === cb.href} key={index} >{cb.icon}</IconsNav>
+            )
+          })}
       </div>
     </div>
   );
 };
 
 export default Navbar;
+
+interface iconsProps {
+  children: React.ReactNode;
+  href: string;
+  active?: boolean;
+}
+
+export const IconsNav: FunctionComponent<iconsProps> = ({ children, href, active }) => {
+  return (
+    <Link
+      href={href}
+      className="hover:bg-color-gray rounded-full p-2 flex flex-col items-center"
+    >
+      {children}
+      <div className={`mt-1.5 ${!active && "opacity-0"} h-1.5 w-1.5 rounded-full bg-color-secondary`}></div>
+    </Link>
+  );
+};
