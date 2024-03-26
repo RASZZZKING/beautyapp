@@ -40,7 +40,7 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
     ],
   };
   const sizes: Size = {
-    size: [38, 40, 43, 45, 50]
+    size: [38, 40, 43, 45, 50, 51,56,77, 79, 81, 93,95]
   }
   return (
     <>

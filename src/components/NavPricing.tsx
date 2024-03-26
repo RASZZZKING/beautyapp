@@ -7,7 +7,7 @@ interface NavPricingProps {
  
 const NavPricing: FunctionComponent<NavPricingProps> = () => {
     return ( 
-        <div className=" flex gap-4 flex-col w-full mt-8  shadow-2xl pt-5 rounded-lg px-4">
+        <div className=" flex gap-4 flex-col w-full mt-8  shadow-inner pt-5 rounded-lg px-4 pb-2">
             <div className="font-semibold flex justify-between">
                 <p className="opacity-50 text-base">Subtotal</p>
                 <div className="flex items-center">
@@ -33,7 +33,7 @@ const NavPricing: FunctionComponent<NavPricingProps> = () => {
                 </div>
             </div>
             <p className="text-md text-color-placeholder font-semibold">You saved <span className="text-color-main opacity-100">Rp 30.000</span> with this purchase.</p>
-            <div className="h-14 bg-color-secondary font-bold text-color-primary flex justify-center items-center rounded-xl text-xl w-full text-center">
+            <div className="h-12 bg-color-secondary font-bold text-color-primary flex justify-center items-center rounded-xl text-xl w-full text-center">
                 Checkout
             </div>
         </div>

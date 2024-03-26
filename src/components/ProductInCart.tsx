@@ -8,9 +8,9 @@ interface ProdcutInCartProps {
  
 const ProdcutInCart: FunctionComponent<ProdcutInCartProps> = () => {
     return ( 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4  rounded-xl">
             <div className="flex gap-4 items-center">
-                <div className="aspect-square h-20 bg-color-placeholder rounded-xl"></div>
+                <div className="aspect-square h-20 bg-color-placeholder  shadow-lg rounded-xl"></div>
                 <div className="grow flex flex-col gap-1">
                     <div className="flex flex-col">
                     <p className="text-base font-semibold">Crewneck Sweatshirt</p>

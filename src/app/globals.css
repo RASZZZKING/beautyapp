@@ -15,3 +15,10 @@ body {
 .covers3{
   padding-bottom: 0rem;
 }
+.hidden-scrollbar::-webkit-scrollbar{
+    display: none;
+}
+.hidden-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

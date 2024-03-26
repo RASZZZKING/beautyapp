@@ -7,7 +7,7 @@ const CategoriesButton: FunctionComponent<CategoriesButtonProps> = () => {
   const [activeCat, setActiveCat] = useState<string>("All")
   
   return (
-    <div className="w-full max-w-full max-h-10 flex gap-2 overflow-x-auto whitespace-nowrap">
+    <div className="w-full max-w-full max-h-10 flex gap-2 overflow-x-auto whitespace-nowrap hidden-scrollbar">
       <Button setActiveCat={setActiveCat} activeCat={activeCat} name="All"/>
       <Button setActiveCat={setActiveCat} activeCat={activeCat} name="Skirt"/>
       <Button setActiveCat={setActiveCat} activeCat={activeCat} name="Clothes"/>
