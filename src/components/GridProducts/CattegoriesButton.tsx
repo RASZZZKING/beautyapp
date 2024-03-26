@@ -28,7 +28,7 @@ const Button = ({ name, activeCat, setActiveCat }: { name: string, activeCat: st
     setActiveCat(name)
   }
   return (
-    <button onClick={handleClick} className={`min-h-10 w-auto  aspect-video px-2.5 text-color-primary rounded-lg flex justify-center items-center ${name === activeCat ? "bg-color-secondary" : "bg-color-primary border-color-placeholder border text-color-placeholder"}`}>
+    <button onClick={handleClick} className={`min-h-10 w-auto  aspect-video px-2.5  rounded-lg flex justify-center items-center ${name === activeCat ? "bg-color-secondary text-color-primary" : "bg-color-primary border-color-placeholder border text-color-placeholder"}`}>
       {name}
     </button>
   );
