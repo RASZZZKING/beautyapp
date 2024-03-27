@@ -25,18 +25,18 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
           <p className="grow text-base font-semibold text-color-secondary">
             My Purchase
           </p>
-          <p className="text-xs opacity-50">View Purchase History</p>
+          <p className="text-xs opacity-50 cursor-pointer">View Purchase History</p>
         </div>
         <div className="flex items-center justify-around">
-          <div className="flex flex-col justify-center items-center">
+          <div className="cursor-pointer flex flex-col justify-center items-center">
             <CreditCard size={28} />
             <p className="text-xs -mt-0.5">Pay</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
+          <div className="cursor-pointer flex flex-col justify-center items-center">
             <Truck size={28} />
             <p className="text-xs -mt-0.5">Ship</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
+          <div className="cursor-pointer flex flex-col justify-center items-center">
             <Package size={28} />
             <p className="text-xs -mt-0.5">Receive</p>
           </div>
@@ -48,18 +48,18 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
           <p className="grow text-base font-semibold text-color-secondary">
             My Voucher
           </p>
-          <p className="text-xs opacity-50">View Voucher History</p>
+          <p className="text-xs opacity-50 cursor-pointer">View Voucher History</p>
         </div>
         <div className="flex items-center justify-around">
-          <div className="flex flex-col justify-center items-center">
+          <div className="cursor-pointer flex flex-col justify-center items-center">
             <TagSimple size={28} />
             <p className="text-xs -mt-0.5">Discount</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
+          <div className="cursor-pointer flex flex-col justify-center items-center">
             <Truck size={28} />
             <p className="text-xs -mt-0.5">Free Delevery</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
+          <div className="cursor-pointer flex flex-col justify-center items-center">
             <Coins size={28} />
             <p className="text-xs -mt-0.5">Cashback</p>
           </div>
@@ -68,11 +68,11 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
     </div>
       <div className=" flex flex-col p-2 gap-2 w-full  ">
         <div className="flex items-center justify-between">
-          <div className="flex gap-1.5  justify-center items-center">
+          <div className="flex gap-1.5 cursor-pointer  justify-center items-center">
           <Question size={20} />
             <p className="text-xs">Help Centre</p>
           </div>
-          <div className="flex gap-1.5  flex-row-reverse justify-center items-center">
+          <div className="flex gap-1.5 cursor-pointer  flex-row-reverse justify-center items-center">
           <EnvelopeSimple size={20} />
             <p className="text-xs">Contact Me</p>
           </div>

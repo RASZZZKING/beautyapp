@@ -2,6 +2,7 @@ import DescDetail from "@/components/DescDetail";
 import ImageDetail from "@/components/ImageDetail";
 import SelecetColor from "@/components/SelectColor";
 import SelectSize from "@/components/SelectSize";
+import TagPricing from "@/components/TagPricing";
 import HeaderCaption from "@/components/utils/HeaderCaption";
 import HeaderNav from "@/components/utils/HeaderNav";
 import { FunctionComponent, useState } from "react";
@@ -61,24 +62,11 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
           caption="Select size"
           size="base"
           linkCaption="size guide"
-          href="sizeguide"
+          type="sizeguide"
         />
         <SelectSize data={sizes} />
       </div>
-      <div className="opacity-100 absolute mw500 max-[450px]:fixed w-full  bg-color-primary border-opacity-30 border-color-placeholder border-t rounded-xl min-[450px]:-mt-[4.3rem]">
-        <div className=" flex justify-between bg-color-primary w-full h-20 items-center px-6 py-4 rounded-xl">
-          <div className="flex gap-2 justify-center items-center">
-            <div className="flex items-end gap-1">
-              <p className="text-md opacity-50">Rp</p>
-              <p className="text-xl font-semibold">500.000</p>
-            </div>
-            <p className="text-sm opacity-50 line-through">750.000</p>
-          </div>
-          <div className="bg-color-secondary h-full w-36 rounded-xl flex justify-center items-center">
-            <p className="text-md text-color-primary">Add to cart</p>
-          </div>
-        </div>
-      </div>
+      <TagPricing />
     </>
   );
 };

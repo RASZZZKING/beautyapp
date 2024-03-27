@@ -24,7 +24,7 @@ const SelectSize: FunctionComponent<SelectSizeProps> = ({ data }) => {
             <div className={`flex gap-1 items-center ${ lastItem && "pe-2 me-2" }`} key={index}>
               <label
                 className={`${
-                  selected !== cb && "opacity-50"
+                  selected !== cb ? "opacity-50" : "fadeIn2"
                 } cursor-pointer aspect-square  m-0 h-14 flex items-center justify-center`}
               >
                 <input
@@ -38,7 +38,7 @@ const SelectSize: FunctionComponent<SelectSizeProps> = ({ data }) => {
                 <div className="flex flex-col justify-between items-center min-h-14">
                   <div className="bg-color-secondary w-10 h-1 opacity-0"></div>
                   <p className="text-md font-semibold">{cb}</p>
-                  <div className={`bg-color-secondary w-10 h-1 rounded-sm ${selected !== cb && "opacity-0"}`}></div>
+                  <div className={`bg-color-secondary w-10 h-1 rounded-sm ${selected !== cb ? "opacity-0" : "fadeIn"}`}></div>
                 </div>
               </label>
               {!lastItem && (

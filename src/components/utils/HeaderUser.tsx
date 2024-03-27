@@ -7,8 +7,8 @@ interface HeaderUserProps {}
 const HeaderUser: FunctionComponent<HeaderUserProps> = () => {
   return (
     <div className="flex justify-between">
-      <ChatCentered size={32} />
-      <DotsThree size={32} />
+      <ChatCentered size={32} className="cursor-pointer" />
+      <DotsThree size={32} className="cursor-pointer" />
     </div>
   );
 };

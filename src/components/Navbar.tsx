@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent, ReactNode, useEffect, useRef } from "react";
 import {
   Basket,
   Heart,
@@ -37,6 +37,7 @@ const dataIcon = [
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
   const path = usePathname()
+
   return (
     <div className="mw500   min-[450px]:shadow-none bottom-0  shadow-inner w-full  fixed  rounded-t">
       <div className=" rounded h-16 mxb-10 bg-color-primary flex justify-evenly items-center">
@@ -58,14 +59,15 @@ interface iconsProps {
   active?: boolean;
 }
 
-export const IconsNav: FunctionComponent<iconsProps> = ({ children, href, active }) => {
+
+export const IconsNav: FunctionComponent<iconsProps> = ({ children, href, active,  }) => {
   return (
     <Link
       href={href}
       className="hover:bg-color-gray rounded-full p-2 flex flex-col items-center"
     >
       {children}
-      <div className={`mt-1.5 ${!active && "opacity-0"} h-1.5 w-1.5 rounded-full bg-color-secondary`}></div>
+      <div  className={`mt-1.5 ${active ? "fade-up" : "opacity-0"}  h-1.5 w-1.5 rounded-full bg-color-secondary`}></div>
     </Link>
   );
 };
