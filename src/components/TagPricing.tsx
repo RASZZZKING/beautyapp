@@ -14,7 +14,7 @@ const TagPricing: FunctionComponent<TagPricingProps> = () => {
         }, 400);
     }
     return ( 
-        <div className="opacity-100 absolute mw500 max-[450px]:fixed w-full  bg-color-primary border-opacity-30 border-color-placeholder border-t rounded-xl min-[450px]:-mt-[4.3rem]">
+        <div className="opacity-100 buttum absolute mw500 max-[450px]:fixed w-full  bg-color-primary border-opacity-30 border-color-placeholder border-t rounded-xl min-[450px]:-mt-[4.3rem]">
         <div className=" flex justify-between bg-color-primary w-full h-20 items-center px-6 py-4 rounded-xl">
           <div className="flex gap-2 justify-center items-center">
             <div className="flex items-end gap-1">

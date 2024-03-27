@@ -183,3 +183,9 @@ body {
     opacity: 1;
 }
 }
+
+@media screen and (max-width: 450px) {
+  .buttum {
+    bottom: 0;
+  }
+}
