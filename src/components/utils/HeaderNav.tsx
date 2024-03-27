@@ -1,6 +1,6 @@
 "use client"
 import { Basket, CaretLeft, DotsThree, Heart, MagnifyingGlass } from "@phosphor-icons/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent } from "react";
 
 interface HeaderNavProps {
@@ -11,8 +11,10 @@ interface HeaderNavProps {
 
 const HeaderNav: FunctionComponent<HeaderNavProps> = ({liked, model, title}) => {
   const router = useRouter()
+  const path = usePathname()
   const handleClick = () => {
     router.back()
+    router.push("/")
   }
   return (
     <div className="flex justify-between">

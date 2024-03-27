@@ -17,7 +17,7 @@ const SelectSize: FunctionComponent<SelectSizeProps> = ({ data }) => {
   return (
     <div>
       <div className="flex  w-full  items-center max-w-full min-h-14 gap-1 overflow-x-auto hidden-scrollbar whitespace-nowrap bg-color-gray border-opacity-30 border-color-placeholder border rounded-xl"></div>
-      <div className="flex -mt-14  w-full  items-center max-w-full min-h-14 gap-1 overflow-x-auto hidden-scrollbar whitespace-nowrap  ">
+      <div className="flex -mt-14  w-full  items-center max-w-full min-h-14 gap-1 overflow-x-auto hidden-scrollbar whitespace-nowrap rounded-xl">
         {data?.size.map((cb, index) => {
           const lastItem = index === data.size.length - 1;
           return (

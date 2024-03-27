@@ -66,7 +66,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
         </div>
       </div>
     </div>
-      <div className=" flex flex-col p-2 gap-2 fixed w-full pe-10 bottom-20">
+      <div className=" flex flex-col p-2 gap-2 w-full  ">
         <div className="flex items-center justify-between">
           <div className="flex gap-1.5  justify-center items-center">
           <Question size={20} />

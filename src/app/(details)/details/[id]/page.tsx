@@ -44,7 +44,7 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
   }
   return (
     <>
-      <div className="covers2  flex flex-col gap-5">
+      <div className="covers2 mh50 hidden-scrollbar min-[450px]:rounded-xl min-[450px]:shadow-2xl flex flex-col gap-5 min-[450px]:-mt-2">
         <HeaderNav model="like" title="Product Details" liked={false} />
         <ImageDetail src={"oke"} />
         <DescDetail
@@ -65,8 +65,8 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
         />
         <SelectSize data={sizes} />
       </div>
-      <div className="bottom-0 fixed w-full h-20 bg-color-gray border-opacity-30 border-color-placeholder border-t rounded-xl px-6 py-4">
-        <div className=" flex justify-between w-full h-full items-center">
+      <div className="opacity-100 absolute mw500 max-[450px]:fixed w-full  bg-color-primary border-opacity-30 border-color-placeholder border-t rounded-xl min-[450px]:-mt-[4.3rem]">
+        <div className=" flex justify-between bg-color-primary w-full h-20 items-center px-6 py-4 rounded-xl">
           <div className="flex gap-2 justify-center items-center">
             <div className="flex items-end gap-1">
               <p className="text-md opacity-50">Rp</p>

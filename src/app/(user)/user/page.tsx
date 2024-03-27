@@ -9,7 +9,7 @@ interface pageProps {}
 const page: FunctionComponent<pageProps> = () => {
   return (
     <>
-      <div className="covers bg-color-gray">
+      <div className="covers bg-color-gray min-[450px]:shadow-2xl min-[450px]:rounded-xl min-[450px]:-mt-2 hidden-scrollbar mh50">
         <div className="flex flex-col gap-5">
             <HeaderUser />
             <ProfileDetail />

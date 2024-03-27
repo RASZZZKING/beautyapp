@@ -38,8 +38,8 @@ const dataIcon = [
 const Navbar: FunctionComponent<NavbarProps> = () => {
   const path = usePathname()
   return (
-    <div className="bg-color-primary shadow-inner w-full h-16 bottom-0 fixed px-3 rounded-t">
-      <div className=" rounded h-full flex justify-evenly items-center">
+    <div className="mw500   min-[450px]:shadow-none bottom-0  shadow-inner w-full  fixed  rounded-t">
+      <div className=" rounded h-16 mxb-10 bg-color-primary flex justify-evenly items-center">
           {dataIcon.map((cb,index)=>{
             return(
               <IconsNav href={cb.href} active={path === cb.href} key={index} >{cb.icon}</IconsNav>

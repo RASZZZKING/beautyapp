@@ -4,9 +4,20 @@
 
 body {
 }
-
+@media screen and (min-width: 450px) {
+  .mw500{
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  .mh50{
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.mxb-10{
+  margin-bottom: 2rem;
+}
+}
 .covers, .covers2, .covers3{
-  min-height: 100svh;
   padding: 1rem;
   padding-top: 1.75rem;
   padding-bottom: 5.75rem;

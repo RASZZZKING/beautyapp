@@ -11,7 +11,7 @@ interface pageProps {}
 const page: FunctionComponent<pageProps> = async () => {
   return (
     <>
-      <div className="covers">
+      <div className="covers mh50 hidden-scrollbar min-[450px]:rounded-xl min-[450px]:shadow-2xl min-[450px]:-mt-2">
         <div className="flex flex-col gap-5">
           <SearchInput />
           <Carousel />

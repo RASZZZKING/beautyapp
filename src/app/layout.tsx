@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={gabarito.className}>
-        {children}
+        <div className="mw500 min-[450px]:py-10">
+          {children}
+        </div>
       </body>
     </html>
   );
