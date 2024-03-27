@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent, ReactNode, useEffect, useRef } from "react";
 import {
   Basket,
   Heart,
@@ -37,9 +37,10 @@ const dataIcon = [
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
   const path = usePathname()
+
   return (
-    <div className="bg-color-primary shadow-inner w-full h-16 bottom-0 fixed px-3 rounded-t">
-      <div className=" rounded h-full flex justify-evenly items-center">
+    <div className="mw500   min-[450px]:shadow-none bottom-0  shadow-inner w-full  fixed  rounded-t">
+      <div className=" rounded h-16 mxb-10 bg-color-primary flex justify-evenly items-center">
           {dataIcon.map((cb,index)=>{
             return(
               <IconsNav href={cb.href} active={path === cb.href} key={index} >{cb.icon}</IconsNav>
@@ -58,14 +59,15 @@ interface iconsProps {
   active?: boolean;
 }
 
-export const IconsNav: FunctionComponent<iconsProps> = ({ children, href, active }) => {
+
+export const IconsNav: FunctionComponent<iconsProps> = ({ children, href, active,  }) => {
   return (
     <Link
       href={href}
       className="hover:bg-color-gray rounded-full p-2 flex flex-col items-center"
     >
       {children}
-      <div className={`mt-1.5 ${!active && "opacity-0"} h-1.5 w-1.5 rounded-full bg-color-secondary`}></div>
+      <div  className={`mt-1.5 ${active ? "fade-up" : "opacity-0"}  h-1.5 w-1.5 rounded-full bg-color-secondary`}></div>
     </Link>
   );
 };
