@@ -53,11 +53,11 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
     setReceiveHistory(true);
   };
   const handleShip = () => {
-    setShipHistory(true)
-  }
+    setShipHistory(true);
+  };
   const handleDiscount = () => {
-    setDiscountHistory(true)
-  }
+    setDiscountHistory(true);
+  };
 
   return (
     <>
@@ -80,11 +80,17 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
               <CreditCard size={28} />
               <p className="text-xs -mt-0.5">Pay</p>
             </div>
-            <div onClick={handleShip} className="cursor-pointer flex flex-col justify-center items-center">
+            <div
+              onClick={handleShip}
+              className="cursor-pointer flex flex-col justify-center items-center"
+            >
               <Truck size={28} />
               <p className="text-xs -mt-0.5">Ship</p>
             </div>
-            <div onClick={handleReceive} className="cursor-pointer flex flex-col justify-center items-center">
+            <div
+              onClick={handleReceive}
+              className="cursor-pointer flex flex-col justify-center items-center"
+            >
               <Package size={28} />
               <p className="text-xs -mt-0.5">Receive</p>
             </div>
@@ -101,15 +107,24 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             </p>
           </div>
           <div className="flex items-center justify-around">
-            <div onClick={handleDiscount} className="cursor-pointer flex flex-col justify-center items-center">
+            <div
+              onClick={handleDiscount}
+              className="cursor-pointer flex flex-col justify-center items-center"
+            >
               <TagSimple size={28} />
               <p className="text-xs -mt-0.5">Discount</p>
             </div>
-            <div onClick={handleDiscount} className="cursor-pointer flex flex-col justify-center items-center">
+            <div
+              onClick={handleDiscount}
+              className="cursor-pointer flex flex-col justify-center items-center"
+            >
               <Truck size={28} />
               <p className="text-xs -mt-0.5">Free Delevery</p>
             </div>
-            <div onClick={handleDiscount} className="cursor-pointer flex flex-col justify-center items-center">
+            <div
+              onClick={handleDiscount}
+              className="cursor-pointer flex flex-col justify-center items-center"
+            >
               <Coins size={28} />
               <p className="text-xs -mt-0.5">Cashback</p>
             </div>
@@ -260,9 +275,8 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
           </div>
         </div>
       )}
-      {
-        shipHistory && (
-          <div
+      {shipHistory && (
+        <div
           className={`fixed ${
             slow ? "fadeOut" : "fadeIn3"
           } top-0 left-0 max-h-screen h-full z-[201]  w-full flex justify-center items-center`}
@@ -304,11 +318,9 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             </div>
           </div>
         </div>
-        )
-      }
-      {
-        receiveHistory && (
-          <div
+      )}
+      {receiveHistory && (
+        <div
           className={`fixed ${
             slow ? "fadeOut" : "fadeIn3"
           } top-0 left-0 max-h-screen h-full z-[201]  w-full flex justify-center items-center`}
@@ -350,11 +362,9 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             </div>
           </div>
         </div>
-        )
-      }
-      {
-        discountHistory && (
-          <div
+      )}
+      {discountHistory && (
+        <div
           className={`fixed ${
             slow ? "fadeOut" : "fadeIn3"
           } top-0 left-0 max-h-screen h-full z-[201]  w-full flex justify-center items-center`}
@@ -362,7 +372,9 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
           <div className="bg-color-primary w-[20rem] rounded-2xl shadow-xl p-4">
             <div className="w-full h-full">
               <div className="flex justify-between items-center">
-                <p className="font-bold text-color-main text-lg">Your Discount</p>
+                <p className="font-bold text-color-main text-lg">
+                  Your Discount
+                </p>
                 <X
                   size={18}
                   weight="bold"
@@ -371,27 +383,32 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
                 />
               </div>
               <div className="w-full bg-color-gray shadow-inner font-normal mt-2 rounded-md p-3 min-h-16 flex flex-col gap-3 ">
-              <div className="rounded-lg shadow-md w-full max-w-full bg-color-primary p-3 px-5  flex flex-col gap-2">
-          <div className="gap-2 items-center flex">
-            <div className="grow flex flex-col justify-between">
-              <p className="text-color-placeholder text-sm">{"RAMADHAN SALE"}</p>
-            </div>
-            <div className="flex items-center text-color-placeholder">
-              70
-              <Percent size={17} className="text-color-placeholder" />
-            </div>
-            <p className={`text-color-main font-semibold text-xs cursor-pointer hidden`}>Edit</p>
-          </div>
-              <p className="font-light text-xs truncate">
-                Khusus Pembelian Baju Lebaran
-              </p>
-        </div>
+                <div className="rounded-lg shadow-md w-full max-w-full bg-color-primary p-3 px-5  flex flex-col gap-2">
+                  <div className="gap-2 items-center flex">
+                    <div className="grow flex flex-col justify-between">
+                      <p className="text-color-placeholder text-sm">
+                        {"RAMADHAN SALE"}
+                      </p>
+                    </div>
+                    <div className="flex items-center text-color-placeholder">
+                      70
+                      <Percent size={17} className="text-color-placeholder" />
+                    </div>
+                    <p
+                      className={`text-color-main font-semibold text-xs cursor-pointer hidden`}
+                    >
+                      Edit
+                    </p>
+                  </div>
+                  <p className="font-light text-xs truncate">
+                    Khusus Pembelian Baju Lebaran
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        )
-      }
+      )}
     </>
   );
 };
