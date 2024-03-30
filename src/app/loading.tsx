@@ -3,11 +3,11 @@ import Navbar from "@/components/Navbar";
 import { usePathname } from "next/navigation";
 import { FunctionComponent } from "react";
 
-interface loaderProps {
+interface LoaderProps {
     
 }
  
-const loader: FunctionComponent<loaderProps> = () => {
+const Loader: FunctionComponent<LoaderProps> = () => {
     const path = usePathname()
     const condition = path === "/" || path === "/user" || path === "/like"
     return ( 
@@ -26,4 +26,4 @@ const loader: FunctionComponent<loaderProps> = () => {
      );
 }
  
-export default loader;
+export default Loader;
