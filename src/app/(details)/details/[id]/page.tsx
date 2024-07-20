@@ -21,7 +21,7 @@ interface Colors {
 }
 
 interface Size {
-  size: number[] | string[]
+  size: number[] | string[];
 }
 
 const page: FunctionComponent<pageProps> = ({ params }) => {
@@ -41,8 +41,8 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
     ],
   };
   const sizes: Size = {
-    size: [38, 40, 43, 45, 50, 51,56,77, 79, 81, 93,95]
-  }
+    size: [38, 40, 43, 45, 50, 51, 56, 77, 79, 81, 93, 95],
+  };
   return (
     <>
       <div className="covers2 mh50 hidden-scrollbar min-[450px]:rounded-xl min-[450px]:shadow-2xl flex flex-col gap-5 min-[450px]:-mt-2">

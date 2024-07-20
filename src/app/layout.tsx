@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body className={gabarito.className}>
         <div className="mw500 min-[450px]:py-10">
           {children}
