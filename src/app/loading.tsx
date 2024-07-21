@@ -9,7 +9,7 @@ interface LoaderProps {
  
 const Loader: FunctionComponent<LoaderProps> = () => {
     const path = usePathname()
-    const condition = path === "/" || path === "/user" || path === "/like"
+    const condition = path === "/" || path === "/user" || path === "/like" || path === "/search"
     return ( 
         <>
         <div className="flex h-screen w-full items-center justify-center">

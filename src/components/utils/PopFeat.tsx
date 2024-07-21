@@ -3,7 +3,6 @@ import { X } from "@phosphor-icons/react/dist/ssr";
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 
 interface PopFeatProps {
-  slow: boolean;
   onClose: () => void;
   children: React.ReactNode;
   title: string;
@@ -11,7 +10,6 @@ interface PopFeatProps {
 }
 
 const PopFeat: FunctionComponent<PopFeatProps> = ({
-  slow,
   onClose,
   children,
   title,
@@ -47,13 +45,17 @@ const PopFeat: FunctionComponent<PopFeatProps> = ({
     }
   }, [isVisible])
   
-  if (!isVisible) return null
+  // if (!isVisible) return null
   
   return (
     <div
       className={`fixed ${
         proops ? "fadeOut" : "fadeIn3"
-      } top-0 left-0 max-h-screen h-full z-[201]  w-full flex justify-center items-center`}
+      }
+      ${
+        isVisible ? "flex" : "hidden" 
+      }
+      top-0 left-0 max-h-screen h-full z-[201]  w-full justify-center items-center`}
     >
       <div
         ref={popUpRef}

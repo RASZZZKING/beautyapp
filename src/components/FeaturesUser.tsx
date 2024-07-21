@@ -23,7 +23,6 @@ interface FeaturesUserProps {}
 const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
   const [popHelp, setPopHelp] = useState<boolean>(false);
   const [popEnvelope, setPopEnvelope] = useState<boolean>(false);
-  const [slow, setSlow] = useState<boolean>(false);
   const [payHistory, setPayHistory] = useState<boolean>(false);
   const [receiveHistory, setReceiveHistory] = useState<boolean>(false);
   const [shipHistory, setShipHistory] = useState<boolean>(false);
@@ -33,7 +32,6 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
     // setSlow(true);
       setPopHelp(false);
       setPopEnvelope(false);
-      setSlow(false);
       setReceiveHistory(false);
       setPayHistory(false);
       setShipHistory(false);
@@ -149,7 +147,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
         </div>
       </div>
 
-        <PopFeat isVisible={popHelp} title="How To Order?" slow={slow} onClose={handleClose}>
+        <PopFeat isVisible={popHelp} title="How To Order?"  onClose={handleClose}>
           <p className="text-xs font-normal mt-2">
             Select from Thirft48 Product your likes, see the detail. You can
             select Color, and Select size (read the guide) and then you can
@@ -173,7 +171,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             you can request with contact example@email.com
           </p>
         </PopFeat>
-        <PopFeat isVisible={popEnvelope} title="Contact Produsen" slow={slow} onClose={handleClose }>
+        <PopFeat isVisible={popEnvelope} title="Contact Produsen"  onClose={handleClose }>
           <p className="text-xs font-normal mt-2">
             Email: youremail@example.com <br />
             Instagram: yourig <br />
@@ -188,7 +186,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             Whatsapp: +62881024277039
           </p>
         </PopFeat>
-        <PopFeat isVisible={payHistory} title="Pay now" slow={slow} onClose={handleClose}>
+        <PopFeat isVisible={payHistory} title="Pay now"  onClose={handleClose}>
           <div className="w-full bg-color-gray shadow-inner font-normal mt-2 rounded-md p-3 min-h-16 flex flex-col gap-3 ">
             <div className="flex justify-between">
               <div className="flex items-center justify-center gap-0.5">
@@ -211,7 +209,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             </div>
           </div>
         </PopFeat>
-        <PopFeat isVisible={shipHistory} title="Your Ship" slow={slow} onClose={handleClose}>
+        <PopFeat isVisible={shipHistory} title="Your Ship"  onClose={handleClose}>
           <div className="w-full bg-color-gray shadow-inner font-normal mt-2 rounded-md p-3 min-h-16 flex flex-col gap-3 ">
             <div className="flex justify-between">
               <div className="flex items-center justify-center gap-0.5">
@@ -234,7 +232,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             </div>
           </div>
         </PopFeat>
-        <PopFeat isVisible={receiveHistory} title="Pay Now" slow={slow} onClose={handleClose}>
+        <PopFeat isVisible={receiveHistory} title="Pay Now"  onClose={handleClose}>
           <div className="w-full bg-color-gray shadow-inner font-normal mt-2 rounded-md p-3 min-h-16 flex flex-col gap-3 ">
             <div className="flex justify-between">
               <div className="flex items-center justify-center gap-0.5">
@@ -257,7 +255,7 @@ const FeaturesUser: FunctionComponent<FeaturesUserProps> = () => {
             </div>
           </div>
         </PopFeat>
-        <PopFeat isVisible={discountHistory} title="Your Discount" slow={slow} onClose={handleClose}>
+        <PopFeat isVisible={discountHistory} title="Your Discount"  onClose={handleClose}>
           <div className="w-full bg-color-gray shadow-inner font-normal mt-2 rounded-md p-3 min-h-16 flex flex-col gap-3 ">
             <div className="rounded-lg shadow-md w-full max-w-full bg-color-primary p-3 px-5  flex flex-col gap-2">
               <div className="gap-2 items-center flex">
