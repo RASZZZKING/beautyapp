@@ -3,6 +3,13 @@ import CategoriesButton from "@/components/GridProducts/CattegoriesButton";
 import GridCard from "@/components/GridProducts/GridCard";
 import Navbar from "@/components/Navbar";
 import PopFeat from "@/components/utils/PopFeat";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import DatePicker, {
+  Calendar,
+  DayValue,
+  DayRange,
+  Day,
+} from "react-modern-calendar-datepicker";
 import {
   MagnifyingGlass,
   CalendarBlank,
@@ -12,8 +19,11 @@ import {
   SlidersHorizontal,
   SortAscending,
   X,
+  Palette,
+  Star,
+  ThumbsUp,
 } from "@phosphor-icons/react/dist/ssr";
-import { FunctionComponent, useRef, useState } from "react";
+import React, { Children, FunctionComponent, ReactNode, useRef, useState } from "react";
 
 interface pageProps {}
 
@@ -21,6 +31,7 @@ const page: FunctionComponent<pageProps> = () => {
   const manifyGlassRef = useRef<HTMLDivElement>(null);
   const inputSearch = useRef<HTMLInputElement>(null);
   const [popFilters, setPopFilters] = useState<boolean>(false);
+  const [popDate, setPopDate] = useState<boolean>(false);
 
   const handleClickInput = () => {
     if (manifyGlassRef.current && inputSearch.current) {
@@ -42,12 +53,47 @@ const page: FunctionComponent<pageProps> = () => {
 
   const handleClose = () => {
     setPopFilters(false);
+    setPopDate(false);
   };
 
   const handlePop = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     setPopFilters(true);
   };
+
+  const handleDate = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setPopDate(true);
+  };
+
+  const defaultFrom = {
+    year: 2024,
+    month: 7,
+    day: 20,
+  };
+
+  const defaultTo = {
+    year: 2024,
+    month: 7,
+    day: 25,
+  };
+
+  const maximumDate = {
+    year: 2025,
+    month: 1,
+    day: 1,
+  };
+
+  const minimumDate = {
+    year: 2024,
+    month: 1,
+    day: 1,
+  };
+
+  const [selectedDay, setSelectedDay] = useState<DayRange>({
+    from: defaultFrom,
+    to: defaultTo,
+  });
 
   return (
     <>
@@ -102,34 +148,34 @@ const page: FunctionComponent<pageProps> = () => {
 
       {/* Pop Filters */}
       <PopFeat title="Filters" onClose={handleClose} isVisible={popFilters}>
-        <div className="grid grid-cols-5 text-xs  items-center justify-center">
-          <div className="flex flex-col gap-1">
-            <SortAscending size={15} />
-            <p>Sort</p>
+        <div className="grid grid-cols-5 gap-x-2 text-xs  items-center justify-center gap-y-2 mt-4">
+          <div
+            onClick={handleDate}
+            className="flex flex-col items-center cursor-pointer justify-center gap-1"
+          >
+            <p>Date</p>
           </div>
-          <div className="flex flex-col gap-1">
-            <CalendarBlank size={15} />
-            <p>Tanggal</p>
-          </div>
-          <div className="flex flex-col gap-1">
-            <Heart size={15} />
-            <p>Likes</p>
-          </div>
-          <div className="flex flex-col gap-1">
-            <Person size={15} />
-            <p>Size</p>
-          </div>
-          <div className="flex flex-col gap-1">
-            <Coins size={15} />
-            <p>Sell</p>
-          </div>
-          <div className="flex flex-col gap-1">
-            <Coins size={15} />
-            <p>Sell</p>
-          </div>
+          {
+            iconPopUp.data.map((cb,i)=>(
+              <ItemsPopUp name={cb.name} key={i} >{cb.icons}</ItemsPopUp>
+            ))
+          }
+        </div>
+        <div
+          className={`transition-all duration-500 overflow-hidden mb-4 ${
+            popDate ? "max-h-[300px]" : "max-h-0"
+          }`}
+        >
+          <Calendar
+            value={selectedDay}
+            onChange={setSelectedDay}
+            shouldHighlightWeekends
+            locale={"en"}
+            maximumDate={maximumDate}
+            minimumDate={minimumDate}
+          />
         </div>
       </PopFeat>
-
       {/* Pop Filters End */}
     </>
   );
@@ -137,8 +183,51 @@ const page: FunctionComponent<pageProps> = () => {
 
 export default page;
 
-const filtersData = {
-    data: {
-      size: ["S", "M", "L", "XL", "XXL"],
+interface ItemPop {
+  children: React.ReactNode
+  name: string
+}
+const ItemsPopUp: FunctionComponent<ItemPop> = ({children, name}) => {
+  return (
+    <div className="flex flex-col items-center cursor-pointer justify-center gap-1">
+      <div className="p-1 w-full bg-color-placeholder rounded items-center justify-center flex flex-col">
+        {children}
+        <p>{name}</p>
+      </div>
+    </div>
+  );
+};
+
+const iconPopUp = {
+  data: [
+    {
+      name: "Date",
+      icons: <CalendarBlank size={15} weight="bold" />,
     },
-  };
+    {
+      name: "Likes",
+      icons: <Heart size={15} weight="bold" />,
+    },
+
+    {
+      name: "Size",
+      icons: <Person size={15} weight="bold" />,
+    },
+    {
+      name: "Sell",
+      icons: <Coins size={15} weight="bold" />,
+    },
+    {
+      name: "Ratings",
+      icons: <Star size={15} weight="bold" />,
+    },
+    {
+      name: "Color",
+      icons: <Palette size={15} weight="bold" />,
+    },
+    {
+      name: "Popular",
+      icons: <ThumbsUp size={15} weight="bold" />,
+    },
+  ],
+};
