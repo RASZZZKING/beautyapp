@@ -173,8 +173,8 @@ body {
 }
 .fadeIn2 {
   opacity: 0.5;
-  animation: fadeIn2 .5s ease-in-out forwards;
-  -webkit-animation: fadeIn2 .5s ease-in-out forwards;
+  animation: fadeIn2 .5s ease-in-out ;
+  -webkit-animation: fadeIn2 .5s ease-in-out ;
 }
 @keyframes fadeIn2 {
   from {

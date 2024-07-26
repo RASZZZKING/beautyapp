@@ -29,17 +29,7 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
 
   const descProdcut =
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemoexpedita corrupti quos Dolore, quibusdam! Quo nostrum obcaecaticumque ipsum";
-  const colors: Colors = {
-    colors: [
-      {
-        name: "white",
-        hex: "#FFFFFF",
-      },
-      { name: "black", hex: "#000000" },
-      { name: "gray", hex: "#36454f" },
-      { name: "brown", hex: "#353839" },
-    ],
-  };
+  
   const sizes: Size = {
     size: [38, 40, 43, 45, 50, 51, 56, 77, 79, 81, 93, 95],
   };
@@ -72,3 +62,15 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
 };
 
 export default page;
+
+ const colors: Colors = {
+  colors: [
+    {
+      name: "white",
+      hex: "#FFFFFF",
+    },
+    { name: "black", hex: "#000000" },
+    { name: "gray", hex: "#36454f" },
+    { name: "brown", hex: "#353839" },
+  ],
+};

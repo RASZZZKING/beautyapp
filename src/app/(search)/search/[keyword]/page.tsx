@@ -23,15 +23,108 @@ import {
   Star,
   ThumbsUp,
 } from "@phosphor-icons/react/dist/ssr";
-import React, { Children, FunctionComponent, ReactNode, useRef, useState } from "react";
+import React, {
+  Children,
+  FunctionComponent,
+  ReactNode,
+  useRef,
+  useState,
+} from "react";
 
 interface pageProps {}
+
+type ActiveIconState = {
+  date: boolean;
+  likes: boolean;
+  size: boolean;
+  sell: boolean;
+  ratings: boolean;
+  color: boolean;
+  popular: boolean;
+};
+type SizingState = {
+  XS: boolean;
+  S: boolean;
+  M: boolean;
+  L: boolean;
+  X: boolean;
+  XL: boolean;
+};
+type ColorsState = {
+  blue: boolean; // Blue
+  black: boolean; // Black
+  white: boolean; // White
+  maroon: boolean; // Maroon
+  gray: boolean; // Gray
+  beggie: boolean; // Beige
+  gold: boolean; // Gold
+  navy: boolean; // Navy
+  coral: boolean; // Coral
+  olive: boolean; // Olive
+  teal: boolean; // Teal
+  lavender: boolean; // Lavender
+  khaki: boolean; // Khaki
+  peach: boolean; // Peach
+  plum: boolean; // Plum
+  sienna: boolean;
+};
+type ViewState = {
+  date: boolean;
+
+  size: boolean;
+
+  color: boolean;
+};
 
 const page: FunctionComponent<pageProps> = () => {
   const manifyGlassRef = useRef<HTMLDivElement>(null);
   const inputSearch = useRef<HTMLInputElement>(null);
   const [popFilters, setPopFilters] = useState<boolean>(false);
   const [popDate, setPopDate] = useState<boolean>(false);
+  const [sizeFilter, setSizeFilter] = useState<string>("");
+  const [showSize, setShowSize] = useState<boolean>(false);
+  const [showDate, setShowDate] = useState<boolean>(false);
+  const [showColor, setShowColor] = useState<boolean>(false);
+  const [activeIcon, setActiveIcon] = useState<ActiveIconState>({
+    date: false,
+    likes: false,
+    size: false,
+    sell: false,
+    ratings: false,
+    color: false,
+    popular: false,
+  });
+  const [showPage, setShowPage] = useState({
+    date: false,
+    size: false,
+    color: false,
+  });
+  const [sizing, setSizing] = useState<SizingState>({
+    XS: false,
+    S: false,
+    M: false,
+    L: false,
+    X: false,
+    XL: false,
+  });
+  const [colorss, setColorss] = useState<ColorsState>({
+    blue: false, // Blue
+    black: false, // Black
+    white: false, // White
+    maroon: false, // Maroon
+    gray: false, // Gray
+    beggie: false, // Beige
+    gold: false, // Gold
+    navy: false, // Navy
+    coral: false, // Coral
+    olive: false, // Olive
+    teal: false, // Teal
+    lavender: false, // Lavender
+    khaki: false, // Khaki
+    peach: false, // Peach
+    plum: false, // Plum
+    sienna: false,
+  });
 
   const handleClickInput = () => {
     if (manifyGlassRef.current && inputSearch.current) {
@@ -59,11 +152,6 @@ const page: FunctionComponent<pageProps> = () => {
   const handlePop = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     setPopFilters(true);
-  };
-
-  const handleDate = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setPopDate(true);
   };
 
   const defaultFrom = {
@@ -94,6 +182,350 @@ const page: FunctionComponent<pageProps> = () => {
     from: defaultFrom,
     to: defaultTo,
   });
+
+  const updateActiveIcon = (iconName: keyof ActiveIconState) => {
+    setActiveIcon((prevState) => ({
+      ...prevState,
+      [iconName]: !prevState[iconName],
+    }));
+  };
+  const updateSizingState = (size: keyof SizingState) => {
+    setSizing((prevState) => ({
+      ...prevState,
+      [size]: !prevState[size],
+    }));
+  };
+  const updateColorsState = (color: keyof ColorsState) => {
+    setColorss((prevState) => ({
+      ...prevState,
+      [color]: !prevState[color],
+    }));
+  };
+  const updateShowState = (view: keyof ViewState) => {
+    setShowPage((prevState) => ({
+      ...prevState,
+      [view]: !prevState[view],
+    }));
+  };
+
+  const handleSize = () => {
+    if (showColor === true || showDate === true) {
+      //kalau pop up nya muncul ni
+      if (activeIcon.size === false) {
+        // kalau ikonya mau aktif
+        // !satu paket start
+        setShowSize(true);
+        setActiveIcon((prevState) => ({
+          ...prevState,
+          size: true,
+        }));
+        // !satu paket end
+      } else if (activeIcon.size === true) {
+        // kalau iconnya aktif tapi popupnya ga muncul
+        if (showSize === false) {
+          setShowSize(true);
+        } else {
+          setActiveIcon((prevState) => ({ ...prevState, size: false }));
+          setShowSize(false);
+        }
+        // kalau iconnya aktif dan popupnya muncul
+      }
+      setShowDate(false); // matiin popupnya
+      setShowColor(false);
+    } else if (
+      showColor === false &&
+      showDate === false &&
+      showSize === false &&
+      activeIcon.size === false
+    ) {
+      // !satu paket start
+      setShowSize(true);
+      setActiveIcon((prevState) => ({
+        ...prevState,
+        size: true,
+      }));
+      // !satu paket end
+    } else if (activeIcon.size === true) {
+      if (showSize === true) {
+      // !satu paket start
+      setShowSize(false);
+      setActiveIcon((prevState) => ({
+        ...prevState,
+        size: false,
+      }));
+      // !satu paket end
+    }else{
+      setShowSize(true)
+    }
+    }
+    // if true return false, if false return true. i want if false return true, if props <= 1 active return showSize true when showSize false, if showSize true you can turn off the togle to false and show the previous showState
+  };
+  const handleColorss = () => {
+    if (showSize || showDate) {
+      //kalau pop up nya muncul ni
+      if (activeIcon.color === false) {
+        // kalau ikonya mau aktif
+        // !satu paket start
+        setShowColor(true);
+        setActiveIcon((prevState) => ({
+          ...prevState,
+          color: true,
+        }));
+        // !satu paket end
+      } else if (activeIcon.color === true) {
+        // kalau iconnya aktif tapi popupnya ga muncul
+        if (showColor === false) {
+          setShowColor(true);
+        } else {
+          setActiveIcon((prevState) => ({ ...prevState, color: false }));
+          setShowColor(false);
+        }
+        // kalau iconnya aktif dan popupnya muncul
+      }
+      setShowDate(false); // matiin popupnya
+      setShowSize(false);
+    } else if (
+      showColor === false &&
+      showDate === false &&
+      showSize === false &&
+      activeIcon.color === false
+    ) {
+      // !satu paket start
+      setShowColor(true);
+      setActiveIcon((prevState) => ({
+        ...prevState,
+        color: true,
+      }));
+      // !satu paket end
+    } else if (activeIcon.color === true) {
+      // !satu paket start
+      if (showColor === true) {
+      setShowColor(false);
+      setActiveIcon((prevState) => ({
+        ...prevState,
+        color: false,
+      }));
+      // !satu paket end
+    }else{
+      setShowColor(true);
+
+    }
+    }
+    // if true return false, if false return true. i want if false return true, if props <= 1 active return showSize true when showSize false, if showSize true you can turn off the togle to false and show the previous showState
+  };
+  const handleDate = () => {
+    if (showSize || showColor) {
+      //kalau pop up nya muncul ni
+      if (activeIcon.date === false) {
+        // kalau ikonya mau aktif
+        // !satu paket start
+        setShowDate(true);
+        setActiveIcon((prevState) => ({
+          ...prevState,
+          date: true,
+        }));
+        // !satu paket end
+      } else if (activeIcon.date === true) {
+        // kalau iconnya aktif tapi popupnya ga muncul
+        if (showDate === false) {
+          setShowDate(true);
+        } else {
+          setActiveIcon((prevState) => ({ ...prevState, date: false }));
+          setShowDate(false);
+        }
+        // kalau iconnya aktif dan popupnya muncul
+      }
+      setShowColor(false); // matiin popupnya
+      setShowSize(false);
+    } else if (
+      showColor === false &&
+      showDate === false &&
+      showSize === false &&
+      activeIcon.date === false
+    ) {
+      // !satu paket start
+      setShowDate(true);
+      setActiveIcon((prevState) => ({
+        ...prevState,
+        date: true,
+      }));
+      // !satu paket end
+    } else if (activeIcon.date === true) {
+      // !satu paket start
+      if (showDate === true) {
+        setShowDate(false);
+        setActiveIcon((prevState) => ({
+          ...prevState,
+          date: false,
+        }));
+        // !satu paket end
+      } else {
+        setShowDate(true);
+      }
+    } else {
+    }
+    // if true return false, if false return true. i want if false return true, if props <= 1 active return showSize true when showSize false, if showSize true you can turn off the togle to false and show the previous showState
+  };
+
+  // const handleSize = () => {
+  //   updateActiveIcon("size");
+  //   updateShowState("size");
+  //   if(activeIcon.date === true){
+  //     updateShowState("date")
+  //     if(activeIcon.color === true){
+  //       updateShowState("date")
+  //       updateShowState("color")
+
+  //     }
+  //   }
+
+  // };
+  // const handleColorss = () => {
+  //   updateActiveIcon("color");
+  //   updateShowState("color");
+  //   if (showPage.size) {
+  //     updateShowState("size");
+  //     if (activeIcon.color) updateShowState("size");
+  //   }
+  //   if (activeIcon.color === true) {
+  //     if (activeIcon.size === true) {
+  //       updateShowState("size");
+  //       // if (activeIcon.date) updateShowState("size");
+  //     }
+  //     if (activeIcon.date === true) {
+  //       updateShowState("date")
+  //       if (activeIcon.size === true) {
+  //         updateShowState("size");
+  //       }
+  //     }
+  //   }
+
+  //   if (activeIcon.color === false) {
+  //     if (activeIcon.date === true) {
+  //       updateShowState("date");
+  //     }
+  //   }
+  // };
+  // const handleDate = (event: React.MouseEvent<HTMLDivElement>) => {
+  //   event.preventDefault();
+  //   updateActiveIcon("date");
+
+  //   updateShowState("date");
+  //   if (showPage.size) {
+  //     updateShowState("size");
+  //     if (activeIcon.date) updateShowState("size");
+  //   }
+  //   if (activeIcon.date === true) {
+  //     if (activeIcon.size === true) {
+  //       updateShowState("size");
+  //       // if (activeIcon.date) updateShowState("size");
+  //     }
+  //     if (activeIcon.color === true) {
+  //       updateShowState("color");
+  //       if (activeIcon.size === true) {
+  //         updateShowState("size");
+  //       }
+  //     }
+  //   }
+  //   if (activeIcon.date === false) {
+  //     if (activeIcon.color === true) {
+  //       updateShowState("color");
+  //     }
+  //   }
+  // };
+
+  // !error
+  // const handleDate = () =>{
+  //   updateActiveIcon("date")
+  //   setShowDate(true)
+  // }
+  // const handleSize = () =>{
+  //   updateActiveIcon("size")
+  //   setShowSize(true)
+  // }
+  // const handleColorss = () =>{
+  //   updateActiveIcon("color")
+  //   setShowColor(true)
+  // }
+  // if(showColor === true){
+  //   setShowDate(false)
+  //   setShowSize(false)
+  // }else if(showDate === true){
+  //   setShowColor(false)
+  //   setShowSize(false)
+  // } else if(
+  //   showSize === true
+  // ){
+  //   setShowDate(false)
+  //   setShowColor(false)
+  // }
+  // !error
+
+  const iconPopUp = {
+    data: [
+      {
+        name: "date" as keyof ActiveIconState,
+        icons: <CalendarBlank size={15} weight="bold" />,
+        onClick: handleDate,
+      },
+      {
+        name: "likes" as keyof ActiveIconState,
+        icons: <Heart size={15} weight="bold" />,
+        onClick: () => updateActiveIcon("likes"),
+      },
+
+      {
+        name: "size" as keyof ActiveIconState,
+        icons: <Person size={15} weight="bold" />,
+        onClick: handleSize,
+      },
+      {
+        name: "sell" as keyof ActiveIconState,
+        icons: <Coins size={15} weight="bold" />,
+        onClick: () => updateActiveIcon("sell"),
+      },
+      {
+        name: "ratings" as keyof ActiveIconState,
+        icons: <Star size={15} weight="bold" />,
+        onClick: () => updateActiveIcon("ratings"),
+      },
+      {
+        name: "color" as keyof ActiveIconState,
+        icons: <Palette size={15} weight="bold" />,
+        onClick: handleColorss,
+      },
+      {
+        name: "popular" as keyof ActiveIconState,
+        icons: <ThumbsUp size={15} weight="bold" />,
+        onClick: () => updateActiveIcon("popular"),
+      },
+    ],
+  };
+
+  interface ItemPop {
+    children: React.ReactNode;
+    name: keyof ActiveIconState;
+    onClick: React.ReactEventHandler;
+  }
+  const ItemsPopUp: FunctionComponent<ItemPop> = ({
+    children,
+    name,
+    onClick,
+  }) => {
+    return (
+      <div className="flex flex-col items-center cursor-pointer justify-center gap-1  transition-all duration-500 ease-in-out">
+        <div
+          onClick={onClick}
+          className={`p-1 w-full rounded items-center  transition-all duration-500 ease-in-out justify-center flex flex-col ${
+            activeIcon[name] ? "bg-color-placeholder" : "bg-color-primary"
+          }`}
+        >
+          {children}
+          <p className="capitalize">{name}</p>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -148,22 +580,16 @@ const page: FunctionComponent<pageProps> = () => {
 
       {/* Pop Filters */}
       <PopFeat title="Filters" onClose={handleClose} isVisible={popFilters}>
-        <div className="grid grid-cols-5 gap-x-2 text-xs  items-center justify-center gap-y-2 mt-4">
-          <div
-            onClick={handleDate}
-            className="flex flex-col items-center cursor-pointer justify-center gap-1"
-          >
-            <p>Date</p>
-          </div>
-          {
-            iconPopUp.data.map((cb,i)=>(
-              <ItemsPopUp name={cb.name} key={i} >{cb.icons}</ItemsPopUp>
-            ))
-          }
+        <div className="grid grid-cols-5 gap-x-2 text-xs items-center justify-center gap-y-2 mt-4">
+          {iconPopUp.data.map((cb, i) => (
+            <ItemsPopUp onClick={cb.onClick} name={cb.name} key={i}>
+              {cb.icons}
+            </ItemsPopUp>
+          ))}
         </div>
         <div
-          className={`transition-all duration-500 overflow-hidden mb-4 ${
-            popDate ? "max-h-[300px]" : "max-h-0"
+          className={`transition-all duration-500 overflow-hidden ${
+            showDate ? "max-h-[320px] m-4 mt-0" : "max-h-0"
           }`}
         >
           <Calendar
@@ -175,6 +601,61 @@ const page: FunctionComponent<pageProps> = () => {
             minimumDate={minimumDate}
           />
         </div>
+        <div
+          className={`transition-all duration-500 overflow-hidden ${
+            showSize ? "max-h-[300px]" : "max-h-0"
+          }`}
+        >
+          <div className="w-full grid grid-cols-6 gap-2">
+            {dataSize.data.map((cb, i) => (
+              <label
+                className={`btn transition-all duration-0 ${
+                  true === sizing[cb] &&
+                  "bg-color-main hover:bg-opacity-70 hover:bg-color-main text-color-primary relative"
+                }`}
+                key={i}
+                // onClick={() => setSizeFilter(cb)}
+                onChange={() => updateSizingState(cb)}
+              >
+                <input
+                  type="checkbox"
+                  name="sizeInput"
+                  className="opacity-0 absolute"
+                />
+                {cb}
+              </label>
+            ))}
+          </div>
+        </div>
+        <div
+          className={`transition-all duration-500 overflow-hidden ${
+            showColor ? "max-h-[300px] my-4" : "max-h-0"
+          }`}
+        >
+          <div className="w-full grid grid-cols-6 gap-3 my-3 pe-3">
+            {colors.data.map((cb, index: number) => {
+              return (
+                <label
+                  key={index}
+                  style={{ backgroundColor: `${cb.hex}` }}
+                  className={`aspect-square cursor-pointer ${
+                    colorss[cb.name] === true
+                      ? "ring-2 liked2"
+                      : "opacity-85 border border-color-placeholder border-opacity-70"
+                  } shadow-xl ring-color-placeholder ring-purple-500 ms-2 ring-offset-4 ring-offset-slate-50 dark:ring-offset-slate-900 m-0 h-10 rounded-xl `}
+                >
+                  <input
+                    type="radio"
+                    name="selectColor"
+                    value={cb.name}
+                    onChange={() => updateColorsState(cb.name)}
+                    className="opacity-0"
+                  />
+                </label>
+              );
+            })}
+          </div>
+        </div>
       </PopFeat>
       {/* Pop Filters End */}
     </>
@@ -183,51 +664,34 @@ const page: FunctionComponent<pageProps> = () => {
 
 export default page;
 
-interface ItemPop {
-  children: React.ReactNode
-  name: string
-}
-const ItemsPopUp: FunctionComponent<ItemPop> = ({children, name}) => {
-  return (
-    <div className="flex flex-col items-center cursor-pointer justify-center gap-1">
-      <div className="p-1 w-full bg-color-placeholder rounded items-center justify-center flex flex-col">
-        {children}
-        <p>{name}</p>
-      </div>
-    </div>
-  );
+const dataSize = {
+  data: [
+    "XS" as keyof SizingState,
+    "S" as keyof SizingState,
+    "M" as keyof SizingState,
+    "L" as keyof SizingState,
+    "X" as keyof SizingState,
+    "XL" as keyof SizingState,
+  ],
 };
 
-const iconPopUp = {
+const colors = {
   data: [
-    {
-      name: "Date",
-      icons: <CalendarBlank size={15} weight="bold" />,
-    },
-    {
-      name: "Likes",
-      icons: <Heart size={15} weight="bold" />,
-    },
-
-    {
-      name: "Size",
-      icons: <Person size={15} weight="bold" />,
-    },
-    {
-      name: "Sell",
-      icons: <Coins size={15} weight="bold" />,
-    },
-    {
-      name: "Ratings",
-      icons: <Star size={15} weight="bold" />,
-    },
-    {
-      name: "Color",
-      icons: <Palette size={15} weight="bold" />,
-    },
-    {
-      name: "Popular",
-      icons: <ThumbsUp size={15} weight="bold" />,
-    },
+    { name: "blue" as keyof ColorsState, hex: "#0000FF" }, // Blue
+    { name: "black" as keyof ColorsState, hex: "#000000" }, // Black
+    { name: "white" as keyof ColorsState, hex: "#FFFFFF" }, // White
+    { name: "maroon" as keyof ColorsState, hex: "#800000" }, // Maroon
+    { name: "gray" as keyof ColorsState, hex: "#808080" }, // Gray
+    { name: "beggie" as keyof ColorsState, hex: "#F5F5DC" }, // Beige
+    { name: "gold" as keyof ColorsState, hex: "#FFD700" }, // Gold
+    { name: "navy" as keyof ColorsState, hex: "#000080" }, // Navy
+    { name: "coral" as keyof ColorsState, hex: "#FF7F50" }, // Coral
+    { name: "olive" as keyof ColorsState, hex: "#808000" }, // Olive
+    { name: "teal" as keyof ColorsState, hex: "#008080" }, // Teal
+    { name: "lavender" as keyof ColorsState, hex: "#E6E6FA" }, // Lavender
+    { name: "khaki" as keyof ColorsState, hex: "#F0E68C" }, // Khaki
+    { name: "peach" as keyof ColorsState, hex: "#FFDAB9" }, // Peach
+    { name: "plum" as keyof ColorsState, hex: "#DDA0DD" }, // Plum
+    { name: "sienna" as keyof ColorsState, hex: "#A0522D" },
   ],
 };
