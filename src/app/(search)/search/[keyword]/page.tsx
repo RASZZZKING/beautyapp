@@ -31,7 +31,11 @@ import React, {
   useState,
 } from "react";
 
-interface pageProps {}
+interface pageProps {
+  params: {
+    keyword: string
+  },
+}
 
 type ActiveIconState = {
   date: boolean;
@@ -70,18 +74,17 @@ type ColorsState = {
 };
 type ViewState = {
   date: boolean;
-
   size: boolean;
 
   color: boolean;
 };
 
-const page: FunctionComponent<pageProps> = () => {
+const page: FunctionComponent<pageProps> = ({params}) => {
+  const { keyword } = params
+  const keywordURI = decodeURIComponent(keyword)
   const manifyGlassRef = useRef<HTMLDivElement>(null);
   const inputSearch = useRef<HTMLInputElement>(null);
   const [popFilters, setPopFilters] = useState<boolean>(false);
-  const [popDate, setPopDate] = useState<boolean>(false);
-  const [sizeFilter, setSizeFilter] = useState<string>("");
   const [showSize, setShowSize] = useState<boolean>(false);
   const [showDate, setShowDate] = useState<boolean>(false);
   const [showColor, setShowColor] = useState<boolean>(false);
@@ -146,7 +149,6 @@ const page: FunctionComponent<pageProps> = () => {
 
   const handleClose = () => {
     setPopFilters(false);
-    setPopDate(false);
   };
 
   const handlePop = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -366,101 +368,6 @@ const page: FunctionComponent<pageProps> = () => {
     }
     // if true return false, if false return true. i want if false return true, if props <= 1 active return showSize true when showSize false, if showSize true you can turn off the togle to false and show the previous showState
   };
-
-  // const handleSize = () => {
-  //   updateActiveIcon("size");
-  //   updateShowState("size");
-  //   if(activeIcon.date === true){
-  //     updateShowState("date")
-  //     if(activeIcon.color === true){
-  //       updateShowState("date")
-  //       updateShowState("color")
-
-  //     }
-  //   }
-
-  // };
-  // const handleColorss = () => {
-  //   updateActiveIcon("color");
-  //   updateShowState("color");
-  //   if (showPage.size) {
-  //     updateShowState("size");
-  //     if (activeIcon.color) updateShowState("size");
-  //   }
-  //   if (activeIcon.color === true) {
-  //     if (activeIcon.size === true) {
-  //       updateShowState("size");
-  //       // if (activeIcon.date) updateShowState("size");
-  //     }
-  //     if (activeIcon.date === true) {
-  //       updateShowState("date")
-  //       if (activeIcon.size === true) {
-  //         updateShowState("size");
-  //       }
-  //     }
-  //   }
-
-  //   if (activeIcon.color === false) {
-  //     if (activeIcon.date === true) {
-  //       updateShowState("date");
-  //     }
-  //   }
-  // };
-  // const handleDate = (event: React.MouseEvent<HTMLDivElement>) => {
-  //   event.preventDefault();
-  //   updateActiveIcon("date");
-
-  //   updateShowState("date");
-  //   if (showPage.size) {
-  //     updateShowState("size");
-  //     if (activeIcon.date) updateShowState("size");
-  //   }
-  //   if (activeIcon.date === true) {
-  //     if (activeIcon.size === true) {
-  //       updateShowState("size");
-  //       // if (activeIcon.date) updateShowState("size");
-  //     }
-  //     if (activeIcon.color === true) {
-  //       updateShowState("color");
-  //       if (activeIcon.size === true) {
-  //         updateShowState("size");
-  //       }
-  //     }
-  //   }
-  //   if (activeIcon.date === false) {
-  //     if (activeIcon.color === true) {
-  //       updateShowState("color");
-  //     }
-  //   }
-  // };
-
-  // !error
-  // const handleDate = () =>{
-  //   updateActiveIcon("date")
-  //   setShowDate(true)
-  // }
-  // const handleSize = () =>{
-  //   updateActiveIcon("size")
-  //   setShowSize(true)
-  // }
-  // const handleColorss = () =>{
-  //   updateActiveIcon("color")
-  //   setShowColor(true)
-  // }
-  // if(showColor === true){
-  //   setShowDate(false)
-  //   setShowSize(false)
-  // }else if(showDate === true){
-  //   setShowColor(false)
-  //   setShowSize(false)
-  // } else if(
-  //   showSize === true
-  // ){
-  //   setShowDate(false)
-  //   setShowColor(false)
-  // }
-  // !error
-
   const iconPopUp = {
     data: [
       {
@@ -570,7 +477,7 @@ const page: FunctionComponent<pageProps> = () => {
           <CategoriesButton />
           <div className="flex justify-between items-center -mt-2">
             <p className="text-sm font-semibold">
-              Search for <span className="font-normal">Naruto Jeans</span>
+              Search for <span className="font-normal">{keywordURI}</span>
             </p>
           </div>
           <GridCard />
@@ -588,10 +495,12 @@ const page: FunctionComponent<pageProps> = () => {
           ))}
         </div>
         <div
-          className={`transition-all duration-500 overflow-hidden ${
-            showDate ? "max-h-[320px] m-4 mt-0" : "max-h-0"
+          className={`transition-all duration-500 overflow-hidden  ${
+            showDate ? "max-h-[320px] mt-0" : "max-h-0"
           }`}
         >
+          <div className="w-full flex justify-center items-center h-full">
+
           <Calendar
             value={selectedDay}
             onChange={setSelectedDay}
@@ -600,10 +509,11 @@ const page: FunctionComponent<pageProps> = () => {
             maximumDate={maximumDate}
             minimumDate={minimumDate}
           />
+          </div>
         </div>
         <div
           className={`transition-all duration-500 overflow-hidden ${
-            showSize ? "max-h-[300px]" : "max-h-0"
+            showSize ? "max-h-[300px] mt-4" : "max-h-0"
           }`}
         >
           <div className="w-full grid grid-cols-6 gap-2">

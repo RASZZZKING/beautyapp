@@ -40,7 +40,7 @@ const PopFeat: FunctionComponent<PopFeatProps> = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isVisible]);
-``
+  
   return (
     <div
       className={`fixed ${
@@ -49,7 +49,7 @@ const PopFeat: FunctionComponent<PopFeatProps> = ({
     >
       <div
         ref={popUpRef}
-        className="bg-color-primary min-w-[20rem] rounded-2xl shadow-xl p-4 transition-all transform"
+        className="bg-color-primary min-w-[20rem] max-w-[22rem] rounded-2xl shadow-xl p-4 transition-all transform"
       >
         <div className="w-full h-full">
           <div className="flex justify-between items-center">
