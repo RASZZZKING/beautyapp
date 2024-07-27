@@ -10,7 +10,7 @@ interface GridProductsProps {
 const GridProducts: FunctionComponent<GridProductsProps> = () => {
     return ( 
         <div className="flex flex-col gap-4">
-            <HeaderCaption href="/products" caption="Categories" linkCaption="View all" size="lg" />
+            <HeaderCaption href="/products" caption="Popular Products" linkCaption="View all" size="lg" />
             <CategoriesButton />
             <GridCard />
         </div>

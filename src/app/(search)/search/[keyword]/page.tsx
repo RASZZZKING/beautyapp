@@ -4,11 +4,9 @@ import GridCard from "@/components/GridProducts/GridCard";
 import Navbar from "@/components/Navbar";
 import PopFeat from "@/components/utils/PopFeat";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import DatePicker, {
+import {
   Calendar,
-  DayValue,
   DayRange,
-  Day,
 } from "react-modern-calendar-datepicker";
 import {
   MagnifyingGlass,
@@ -24,9 +22,7 @@ import {
   ThumbsUp,
 } from "@phosphor-icons/react/dist/ssr";
 import React, {
-  Children,
   FunctionComponent,
-  ReactNode,
   useRef,
   useState,
 } from "react";

@@ -2,8 +2,6 @@ import Carousel from "@/components/Carousel";
 import GridProducts from "@/components/GridProducts";
 import Navbar from "@/components/Navbar";
 import SearchInput from "@/components/SearchInput";
-import getApiProduct from "@/libs/getApiProduct";
-import Image from "next/image";
 import { FunctionComponent } from "react";
 
 interface pageProps {}
@@ -22,26 +20,28 @@ const page: FunctionComponent<pageProps> = async () => {
           <SearchInput />
 
           <Carousel slides={data}>
-            {data.map((cb, index) => {
-              return (
-                <div key={index} className="min-w-full h-36 object-cover">
-                  <img
-                    src={cb}
-                    alt="loading"
-                    className="min-w-full bg-color-placeholder h-36 object-cover "
-                  ></img>
-                  <div className="-mt-36 ml-9 h-36 flex items-start gap-3 flex-col max-w-24 text-wrap justify-center ">
-                    <p className="text-2xl font-bold" style={{lineHeight: "1.4rem"}}>
-                      New Collection
-                    </p>
-                    <div className="bg-color-primary text-color-secondary p-2 text-xs flex justify-center items-center rounded-lg">
-                      Shop Now
-                    </div>
+            {data.map((cb, index) => (
+              <div key={index} className="min-w-full h-36 object-cover">
+                <img
+                  src={cb}
+                  alt="loading"
+                  className="min-w-full bg-color-placeholder h-36 object-cover"
+                ></img>
+                <div className="-mt-36 ml-9 h-36 flex items-start gap-3 flex-col max-w-24 text-wrap justify-center ">
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ lineHeight: "1.4rem" }}
+                  >
+                    New Collection
+                  </p>
+                  <div className="bg-color-primary text-color-secondary p-2 text-xs flex justify-center items-center rounded-lg">
+                    Shop Now
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </Carousel>
+
           <GridProducts />
         </div>
       </div>
