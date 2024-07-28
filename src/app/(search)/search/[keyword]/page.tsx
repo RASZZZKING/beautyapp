@@ -23,9 +23,13 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import React, {
   FunctionComponent,
+  KeyboardEventHandler,
   useRef,
   useState,
 } from "react";
+import { theProduct } from "@/libs/dataData";
+import { dataCategories } from "@/libs/dataCategories";
+import { useRouter } from "next/navigation";
 
 interface pageProps {
   params: {
@@ -78,8 +82,10 @@ type ViewState = {
 const page: FunctionComponent<pageProps> = ({params}) => {
   const { keyword } = params
   const keywordURI = decodeURIComponent(keyword)
+
   const manifyGlassRef = useRef<HTMLDivElement>(null);
   const inputSearch = useRef<HTMLInputElement>(null);
+  const router = useRouter()
   const [popFilters, setPopFilters] = useState<boolean>(false);
   const [showSize, setShowSize] = useState<boolean>(false);
   const [showDate, setShowDate] = useState<boolean>(false);
@@ -142,6 +148,22 @@ const page: FunctionComponent<pageProps> = ({params}) => {
       inputSearch.current.style.paddingLeft = "2.5rem";
     }
   };
+
+    // Penanganan klik mouse
+    const handleClick = (event: MouseEvent) => {
+      event.preventDefault();
+      const keyyy = inputSearch.current?.value;
+      router.push(`/search/${keyyy}`);
+    };
+  
+    // Penanganan event keyboard
+    const handleKeyDown = (event: any) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const keyyy = inputSearch.current?.value;
+        router.push(`/search/${keyyy}`);
+      }
+    };
 
   const handleClose = () => {
     setPopFilters(false);
@@ -206,6 +228,7 @@ const page: FunctionComponent<pageProps> = ({params}) => {
     }));
   };
 
+  const [activeCat, setActiveCat] = useState<string>("all")
   const handleSize = () => {
     if (showColor === true || showDate === true) {
       //kalau pop up nya muncul ni
@@ -430,6 +453,11 @@ const page: FunctionComponent<pageProps> = ({params}) => {
     );
   };
 
+  const handleCategoryClick = (url: string) => {
+    setActiveCat(url);
+  };
+
+
   return (
     <>
       <div className="covers mh50 hidden-scrollbar min-[450px]:rounded-xl min-[450px]:shadow-2xl min-[450px]:-mt-2">
@@ -455,6 +483,7 @@ const page: FunctionComponent<pageProps> = ({params}) => {
                   ref={inputSearch}
                   onClick={handleClickInput}
                   onKeyUp={handleKeyDownInput}
+                  onKeyDown={handleKeyDown}
                 />
               </form>
               <div className="right-0 text-color-placeholder absolute flex items-center h-12 px-2  rounded-e-xl">
@@ -470,13 +499,23 @@ const page: FunctionComponent<pageProps> = ({params}) => {
               <SlidersHorizontal size={20} />
             </div>
           </div>
-          <CategoriesButton />
+          <div className="w-full max-w-full max-h-10 flex gap-2 overflow-x-auto whitespace-nowrap hidden-scrollbar">
+              {dataCategories.data.map((cb, i) => (
+                <Button
+                  key={i}
+                  handleClick={() => handleCategoryClick(cb.url)}
+                  activeCat={activeCat}
+                  url={cb.url}
+                  name={cb.title}
+                />
+              ))}
+              </div>
           <div className="flex justify-between items-center -mt-2">
             <p className="text-sm font-semibold">
               Search for <span className="font-normal">{keywordURI}</span>
             </p>
           </div>
-          <GridCard />
+          <GridCard data={theProduct} category={activeCat} />
         </div>
       </div>
       <Navbar />
@@ -600,4 +639,32 @@ const colors = {
     { name: "plum" as keyof ColorsState, hex: "#DDA0DD" }, // Plum
     { name: "sienna" as keyof ColorsState, hex: "#A0522D" },
   ],
+};
+
+interface ButtonProps {
+  url: string;
+  name: string;
+  activeCat: string;
+  handleClick: () => void;
+}
+
+const Button: FunctionComponent<ButtonProps> = ({
+  name,
+  handleClick,
+  activeCat,
+  url,
+}) => {
+  return (
+    <button
+      onClick={handleClick}
+      type="button" // Pastikan type="button" untuk mencegah aksi form default
+      className={`min-h-10 w-auto transition-all duration-500 aspect-video px-2.5 rounded-lg flex justify-center items-center ${
+        url === activeCat
+          ? "bg-color-secondary text-color-primary"
+          : "bg-color-primary border-color-placeholder border text-color-placeholder"
+      }`}
+    >
+      {name}
+    </button>
+  );
 };

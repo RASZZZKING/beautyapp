@@ -1,15 +1,42 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
+import { GridProductsProps } from "../GridProducts";
 
-interface GridCardProps {}
+interface GridCardProps {
+  data: GridProductsProps;
+  category: string;
+}
 
-const GridCard: FunctionComponent<GridCardProps> = () => {
-  return <div className="grid grid-cols-2 gap-4">
-    <CardGrid name="Jeans Levi's" price="300.000" imageUrl="/details/123" />
-    <CardGrid name="Jeans Levi's" price="300.000" imageUrl="/details/123" />
-    <CardGrid name="Jeans Levi's" price="300.000" imageUrl="/details/123" />
-    <CardGrid name="Jeans Levi's" price="300.000" imageUrl="/details/123" />
-  </div>;
+const GridCard: FunctionComponent<GridCardProps> = ({ data, category }) => {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      {data.data.map((cb, i) => {
+        if (category === "all") {
+          return (
+            <CardGrid
+              key={i}
+              name={cb.title}
+              price={cb.price}
+              imageUrl={cb.imageUrl}
+              id={cb.id}
+            />
+          );
+        } else if (cb.category === category) {
+          return (
+            <CardGrid
+              key={i}
+              name={cb.title}
+              price={cb.price}
+              imageUrl={cb.imageUrl}
+              id={cb.id}
+            />
+          );
+        } else {
+          return;
+        }
+      })}
+    </div>
+  );
 };
 
 export default GridCard;
@@ -18,17 +45,25 @@ const CardGrid = ({
   name,
   imageUrl,
   price,
+  id,
 }: {
   name: string;
   imageUrl: string;
-  price: string;
+  price: number;
+  id?: number | null | undefined;
 }) => {
   return (
-    <div className="flex flex-col gap-2">
-      <Link href={`details/123`} className=" aspect-square bg-color-placeholder rounded-2xl"></Link>
+    <div className="flex flex-col gap-2 ">
+      <Link href={`/details/${typeof id === "number" ? id : "0"}`} className="">
+        <img
+          src={imageUrl}
+          alt=""
+          className=" h-56 w-full object-cover aspect-square shadow-xl hover:scale-[102%] transition-all duration-1000 rounded-2xl"
+        />
+      </Link>
       <div>
         <p className="font-semibold text-base">{name}</p>
-        <p className="font-semibold text-base">Rp {price}</p>
+        <p className="font-semibold text-base">$ {price}</p>
       </div>
     </div>
   );

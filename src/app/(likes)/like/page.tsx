@@ -26,6 +26,8 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { theProduct } from "@/libs/dataData";
+import { dataCategories } from "@/libs/dataCategories";
 
 interface pageProps {
   params: {
@@ -93,6 +95,10 @@ const page: FunctionComponent<pageProps> = ({params}) => {
     color: false,
     popular: false,
   });
+  const [activeCat, setActiveCat] = useState<string>("all");
+  const handleCategoryClick = (url: string) => {
+    setActiveCat(url);
+  };
   const [showPage, setShowPage] = useState({
     date: false,
     size: false,
@@ -470,7 +476,17 @@ const page: FunctionComponent<pageProps> = ({params}) => {
               <SlidersHorizontal size={20} />
             </div>
           </div>
-          <CategoriesButton />
+          <div className="w-full max-w-full max-h-10 flex gap-2 overflow-x-auto whitespace-nowrap hidden-scrollbar">
+              {dataCategories.data.map((cb, i) => (
+                <Button
+                  key={i}
+                  handleClick={() => handleCategoryClick(cb.url)}
+                  activeCat={activeCat}
+                  url={cb.url}
+                  name={cb.title}
+                />
+              ))}
+            </div>
           <div className="flex justify-between items-center gap-3 -mt-2">
             <p className="text-sm font-semibold text-wrap">
               Search for <span className="font-normal">{keywordURI}</span>
@@ -479,7 +495,7 @@ const page: FunctionComponent<pageProps> = ({params}) => {
               some products that you <span className="font-semibold">like</span>
             </p>
           </div>
-          <GridCard />
+          <GridCard data={theProduct} category="" />
         </div>
       </div>
       <Navbar />
@@ -603,4 +619,32 @@ const colors = {
     { name: "plum" as keyof ColorsState, hex: "#DDA0DD" }, // Plum
     { name: "sienna" as keyof ColorsState, hex: "#A0522D" },
   ],
+};
+
+interface ButtonProps {
+  url: string;
+  name: string;
+  activeCat: string;
+  handleClick: () => void;
+}
+
+const Button: FunctionComponent<ButtonProps> = ({
+  name,
+  handleClick,
+  activeCat,
+  url,
+}) => {
+  return (
+    <button
+      onClick={handleClick}
+      type="button" // Pastikan type="button" untuk mencegah aksi form default
+      className={`min-h-10 w-auto transition-all duration-500 aspect-video px-2.5 rounded-lg flex justify-center items-center ${
+        url === activeCat
+          ? "bg-color-secondary text-color-primary"
+          : "bg-color-primary border-color-placeholder border text-color-placeholder"
+      }`}
+    >
+      {name}
+    </button>
+  );
 };
