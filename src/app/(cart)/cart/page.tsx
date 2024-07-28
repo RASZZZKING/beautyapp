@@ -8,7 +8,7 @@ interface pageProps {
     
 }
  
-const page: FC<pageProps> = () => {
+const Page: FC<pageProps> = () => {
     return ( 
         <div className="bg-color-primary min-[450px]:p-2 min-[450px]:rounded-2xl min-[450px]:shadow-2xl mh50 hidden-scrollbar min-[450px]:-mt-2">
             <div className="px-4 pt-7 flex flex-col gap-5">
@@ -21,4 +21,4 @@ const page: FC<pageProps> = () => {
      );
 }
  
-export default page;
+export default Page;

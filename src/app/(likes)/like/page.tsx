@@ -77,7 +77,7 @@ type ViewState = {
   color: boolean;
 };
 
-const page: FunctionComponent<pageProps> = ({params}) => {
+const Page: FunctionComponent<pageProps> = ({params}) => {
   const { keyword } = params
   const keywordURI = decodeURIComponent(keyword)
   const manifyGlassRef = useRef<HTMLDivElement>(null);
@@ -587,7 +587,7 @@ const page: FunctionComponent<pageProps> = ({params}) => {
   );
 };
 
-export default page;
+export default Page;
 
 const dataSize = {
   data: [

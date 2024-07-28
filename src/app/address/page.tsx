@@ -15,7 +15,7 @@ import { FunctionComponent, useState } from "react";
 
 interface pageProps {}
 
-const page: FunctionComponent<pageProps> = () => {
+const Page: FunctionComponent<pageProps> = () => {
   const [gender, setGender] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -75,4 +75,4 @@ const page: FunctionComponent<pageProps> = () => {
   );
 };
 
-export default page;
+export default Page;

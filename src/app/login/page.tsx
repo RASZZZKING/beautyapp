@@ -11,7 +11,7 @@ import { FunctionComponent, useState } from "react";
 
 interface pageProps {}
 
-const page: FunctionComponent<pageProps> = () => {
+const Page: FunctionComponent<pageProps> = () => {
   return (
     <>
       <div className=" bg-color-gray min-[450px]:shadow-2xl min-[450px]:rounded-xl min-[450px]:-mt-2 hidden-scrollbar mh50">
@@ -37,4 +37,4 @@ const page: FunctionComponent<pageProps> = () => {
   );
 };
 
-export default page;
+export default Page;

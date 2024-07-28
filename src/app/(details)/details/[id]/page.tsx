@@ -24,7 +24,7 @@ interface Size {
   size: number[] | string[];
 }
 
-const page: FunctionComponent<pageProps> = ({ params }) => {
+const Page: FunctionComponent<pageProps> = ({ params }) => {
   const { id } = params;
 
   const descProdcut =
@@ -61,7 +61,7 @@ const page: FunctionComponent<pageProps> = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
 
  const colors: Colors = {
   colors: [
