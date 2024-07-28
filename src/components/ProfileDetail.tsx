@@ -32,13 +32,13 @@ const ProfileDetail: FunctionComponent<ProfileDetailProps> = () => {
                     Affiliate
                 </div>
             </div>
-            <PopFeat onClose={handleClose} slow={slow} title="Affiliate" isVisible={affliatePop}  >
+            <PopFeat onClose={handleClose} title="Affiliate" isVisible={affliatePop}  >
                 <div className="flex justify-between px-3 mt-2 bg-color-placeholder rounded-md text-color-primary font-semibold py-2 shadow-inner">
                     <span>Code:</span>
                     <span>I123N34</span>
                 </div>
             </PopFeat>
-            <PopFeat onClose={handleClose} slow={slow} title="Events" isVisible={eventsPop}  >
+            <PopFeat onClose={handleClose} title="Events" isVisible={eventsPop}  >
                 <div className="flex justify-center px-3 mt-2 bg-color-placeholder rounded-md text-color-primary font-semibold py-2 shadow-inner">
                     Comming Soon
                 </div>
