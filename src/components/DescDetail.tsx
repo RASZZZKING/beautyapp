@@ -15,7 +15,7 @@ const DescDetail: FunctionComponent<DescDetailProps> = ({title, desc, rating, ra
     <>
       {/* title  */}
       <div className="flex flex-col">
-        <p className="text-xl font-semibold">{title}</p>
+        <p className="text-2xl font-semibold">{title}</p>
         <div className="flex gap-2">
           <div className="flex gap-1">
           <Star size={18} weight="fill" color="#ffce47" />

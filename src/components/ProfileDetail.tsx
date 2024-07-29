@@ -7,7 +7,6 @@ interface ProfileDetailProps {
 }
  
 const ProfileDetail: FunctionComponent<ProfileDetailProps> = () => {
-    const [slow, setSlow] = useState<boolean>(false)
     const [affliatePop, setAffiliatePop] = useState<boolean>(false)
     const [eventsPop, setEventsPop] = useState<boolean>(false)
     const handleClose = () => {
@@ -16,7 +15,7 @@ const ProfileDetail: FunctionComponent<ProfileDetailProps> = () => {
     }
     return ( 
         <div className="flex gap-3 w-full flex-col justify-center items-center">
-            <div className="bg-color-primary shadow-lg aspect-square h-24 rounded-full"></div>
+            <img src="/lakibesar.png" className="bg-color-primary shadow-lg aspect-square h-24 rounded-full"/>
             <p className="font-semibold text-xl border-opacity-50 border-color-placeholder border-b">Rasz Dev</p>
             <div className="flex flex-col gap-1">
                 <div className="bg-color-primary shadow-md -mt-1 py-1 px-2 text-xs rounded-lg  flex justify-center items-center font-semibold cursor-pointer">

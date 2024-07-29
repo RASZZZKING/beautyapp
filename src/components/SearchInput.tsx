@@ -1,12 +1,14 @@
 "use client"
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import { FunctionComponent, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { FunctionComponent, KeyboardEventHandler, useRef } from "react";
 
 interface SearchInputProps {}
 
 const SearchInput: FunctionComponent<SearchInputProps> = () => {
     const manifyGlassRef = useRef<HTMLDivElement>(null)
     const inputSearch = useRef<HTMLInputElement>(null)
+    const router = useRouter()
     const handleClickInput = () => {
         if (manifyGlassRef.current && inputSearch.current) {
             manifyGlassRef.current.style.opacity = "0";
@@ -18,6 +20,13 @@ const SearchInput: FunctionComponent<SearchInputProps> = () => {
             manifyGlassRef.current.style.opacity = "1";
             inputSearch.current.style.paddingLeft = "2.5rem";
         }
+    }
+    const handleKeyDown = (event: any) => {
+      if(event.key==="Enter"){
+        event.preventDefault()
+        const keyword = inputSearch.current?.value
+        router.push(`/search/${keyword}`)
+      }
     }
   return (
     <>
@@ -31,6 +40,7 @@ const SearchInput: FunctionComponent<SearchInputProps> = () => {
         ref={inputSearch}
         onClick={handleClickInput}
         onKeyUp={handleKeyDownInput}
+        onKeyDown={handleKeyDown}
       />
     </>
   );

@@ -142,8 +142,8 @@ body {
 }
 .fadeIn {
   opacity: 0;
-  animation: fadeIn .5s ease-in-out forwards;
-  -webkit-animation: fadeIn .5s ease-in-out forwards;
+  animation: fadeIn .5s ease-in-out;
+  -webkit-animation: fadeIn .5s ease-in-out;
 }
 .fadeIn3 {
   opacity: 0;

@@ -519,15 +519,14 @@ const Page: FunctionComponent<pageProps> = ({ params }) => {
               />
             ))}
           </div>
-          {
-            keywordURI !== null && keywordURI !== undefined ? (
-          <div className="flex justify-between items-center -mt-2">
-            <p className="text-sm font-semibold">
-              Search for <span className="font-normal">{keywordURI}</span>
-            </p>
-          </div>
-            ) : null
-          }
+                <div className="flex justify-between items-center gap-3 -mt-2">
+                <p className="text-sm font-semibold text-wrap">
+                  Search for <span className="font-normal">{keywordURI }</span>
+                </p>
+                <p className="text-sm">
+                  some products that you <span className="font-semibold">like</span>
+                </p>
+              </div>
           <GridCard data={theProduct} category={activeCat} />
         </div>
       </div>

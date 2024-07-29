@@ -1,5 +1,6 @@
 "use client";
 import { MapPin } from "@phosphor-icons/react";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 
 interface LocationClientProps {
@@ -38,7 +39,7 @@ const LocationClient: FunctionComponent<LocationClientProps> = ({
               Missouri,Canton, 285 W Peace St
             </p>
           </div>
-          <p className="text-color-main font-semibold text-md">Edit</p>
+          <Link href={"/address"} className="text-color-main cursor-pointer font-semibold text-md">Edit</Link>
         </div>
       )}
     </>

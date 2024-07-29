@@ -18,7 +18,7 @@ const dataIcon = [
     icon: <House size={32} />
   },
   {
-    href: "/details/123",
+    href: "/search/you",
     icon:  <MagnifyingGlass size={26} />
   },
   {
@@ -26,7 +26,7 @@ const dataIcon = [
     icon:  <Basket size={26} />
   },
   {
-    href: "/like",
+    href: "/like/you",
     icon:  <Heart size={26} />
   },
   {

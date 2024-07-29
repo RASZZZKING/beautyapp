@@ -18,7 +18,7 @@ const GridCard: FunctionComponent<GridCardProps> = ({ data, category }) => {
               name={cb.title}
               price={cb.price}
               imageUrl={cb.imageUrl}
-              id={cb.id}
+              id={i}
             />
           );
         } else if (cb.category === category) {
@@ -28,7 +28,7 @@ const GridCard: FunctionComponent<GridCardProps> = ({ data, category }) => {
               name={cb.title}
               price={cb.price}
               imageUrl={cb.imageUrl}
-              id={cb.id}
+              id={i}
             />
           );
         } else {
@@ -54,7 +54,7 @@ const CardGrid = ({
 }) => {
   return (
     <div className="flex flex-col gap-2 ">
-      <Link href={`/details/${typeof id === "number" ? id : "0"}`} className="">
+      <Link href={`/details/${id}`} className="">
         <img
           src={imageUrl}
           alt=""

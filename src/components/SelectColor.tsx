@@ -19,7 +19,7 @@ const SelecetColor: FunctionComponent<SelecetColorProps> = ({ colors }) => {
     }
 
     useEffect(()=>{
-        console.log(selected);
+        // console.log(selected);
         
     },[selected])
     
