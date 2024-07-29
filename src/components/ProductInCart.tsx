@@ -8,6 +8,7 @@ interface ProdcutInCartProps {
 }
 
 const ProdcutInCart: FunctionComponent<ProdcutInCartProps> = ({ setTotalBiaya }) => {
+  const [productQuantities, setProductQuantities] = useState<number[]>(new Array(theProduct.data.slice(0, 3).length).fill(1));
   const [totalBiaya, setTotalBiayaState] = useState(0);
 
   useEffect(() => {
@@ -27,42 +28,52 @@ const ProdcutInCart: FunctionComponent<ProdcutInCartProps> = ({ setTotalBiaya })
     });
   };
 
+  const ubahBiayaMinus = (index: number, price: number) => {
+    setProductQuantities((prevQuantities) => {
+      const newQuantities = [...prevQuantities];
+      if (newQuantities[index] > 1) {
+        newQuantities[index] -= 1;
+        updateTotal(-price);
+      } else {
+        alert("beneran?");
+      }
+      return newQuantities;
+    });
+  };
+
+  const ubahBiayaPlus = (index: number, price: number) => {
+    setProductQuantities((prevQuantities) => {
+      const newQuantities = [...prevQuantities];
+      newQuantities[index] += 1;
+      updateTotal(price);
+      return newQuantities;
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4  rounded-xl">
-      {theProduct.data.slice(0, 3).map((cb, i) => {
-        const [biayaProdukIni, setBiayaProdukIni] = useState<number>(1);
-        const ubahBiayaMinus = () => {
-          if (biayaProdukIni === 1) return alert("beneran?");
-          setBiayaProdukIni(biayaProdukIni - 1);
-          updateTotal(-cb.price);
-        };
-        const ubahBiayaPlus = () => {
-          setBiayaProdukIni(biayaProdukIni + 1);
-          updateTotal(cb.price);
-        };
-        return (
-          <div key={i} className="flex gap-4 items-center">
-            <img src={cb.imageUrl} className="aspect-square h-20 bg-color-placeholder shadow-lg rounded-xl"/>
-            <div className="grow flex flex-col gap-1">
-              <div className="flex flex-col">
-                <p className="text-base font-semibold">{cb.title}</p>
-                <p className="text-xs font-semibold opacity-50">
-                  Size: {cb.size[0]} - Color: {cb.colors[0].name}
-                </p>
-              </div>
-              <div className="flex items-center">
-                <p className="text-xs font-semibold opacity-50">$</p>
-                <p className="font-semibold text-base">{cb.price * biayaProdukIni}</p>
-              </div>
+      {theProduct.data.slice(0, 3).map((cb, i) => (
+        <div key={i} className="flex gap-4 items-center">
+          <img src={cb.imageUrl} className="aspect-square h-20 bg-color-placeholder shadow-lg rounded-xl" />
+          <div className="grow flex flex-col gap-1">
+            <div className="flex flex-col">
+              <p className="text-base font-semibold">{cb.title}</p>
+              <p className="text-xs font-semibold opacity-50">
+                Size: {cb.size[0]} - Color: {cb.colors[0].name}
+              </p>
             </div>
-            <div className="flex gap-4 items-center">
-              <Minus size={18} weight="bold" onClick={ubahBiayaMinus} className={`${biayaProdukIni === 0 && "disabled"}`} />
-              <p className="font-semibold text-base">{biayaProdukIni}</p>
-              <Plus size={18} weight="bold" onClick={ubahBiayaPlus} className="text-color-main" />
+            <div className="flex items-center">
+              <p className="text-xs font-semibold opacity-50">$</p>
+              <p className="font-semibold text-base">{cb.price * productQuantities[i]}</p>
             </div>
           </div>
-        );
-      })}
+          <div className="flex gap-4 items-center">
+            <Minus size={18} weight="bold" onClick={() => ubahBiayaMinus(i, cb.price)} className={`${productQuantities[i] === 1 && "disabled"}`} />
+            <p className="font-semibold text-base">{productQuantities[i]}</p>
+            <Plus size={18} weight="bold" onClick={() => ubahBiayaPlus(i, cb.price)} className="text-color-main" />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
