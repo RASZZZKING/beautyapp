@@ -72,25 +72,25 @@ const Page: FunctionComponent<PageProps> = () => {
           </div>
         </div>
         <div className="flex flex-row-reverse justify-between -mt-3 w-full max-w-full">
-          <div onClick={()=>setTotalStar(1)} className={`btn ${totalStar === 1 ?"btn-neutral":"btn-outline"} btn-xs`}>
+          <div onClick={()=>setTotalStar(1)} className={`btn text-warning shadow btn-xs`}>
             <Star size={13} weight={totalStar === 1?"fill":"bold"} />
           </div>
-          <div onClick={()=>setTotalStar(2)} className={`btn ${totalStar === 2 ?"btn-neutral":"btn-outline"} btn-xs`}>
+          <div onClick={()=>setTotalStar(2)} className={`btn text-warning shadow btn-xs`}>
             <Star size={13} weight={totalStar === 2?"fill":"bold"} />
             <Star size={13} weight={totalStar === 2?"fill":"bold"} />
           </div>
-          <div onClick={()=>setTotalStar(3)} className={`btn ${totalStar === 3 ?"btn-neutral":"btn-outline"} btn-xs`}>
+          <div onClick={()=>setTotalStar(3)} className={`btn text-warning shadow btn-xs`}>
             <Star size={13} weight={totalStar === 3?"fill":"bold"} />
             <Star size={13} weight={totalStar === 3?"fill":"bold"} />
             <Star size={13} weight={totalStar === 3?"fill":"bold"} />
           </div>
-          <div onClick={()=>setTotalStar(4)} className={`btn ${totalStar === 4 ?"btn-neutral":"btn-outline"} btn-xs`}>
+          <div onClick={()=>setTotalStar(4)} className={`btn text-warning shadow btn-xs`}>
             <Star size={13} weight={totalStar === 4?"fill":"bold"} />
             <Star size={13} weight={totalStar === 4?"fill":"bold"} />
             <Star size={13} weight={totalStar === 4?"fill":"bold"} />
             <Star size={13} weight={totalStar === 4?"fill":"bold"} />
           </div>
-          <div onClick={()=>setTotalStar(5)} className={`btn ${totalStar === 5 ?"btn-neutral":"btn-outline"} btn-xs`}>
+          <div onClick={()=>setTotalStar(5)} className={`btn text-warning shadow btn-xs`}>
             <Star size={13} weight={totalStar === 5?"fill":"bold"} />
             <Star size={13} weight={totalStar === 5?"fill":"bold"} />
             <Star size={13} weight={totalStar === 5?"fill":"bold"} />
