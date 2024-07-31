@@ -1,5 +1,6 @@
 "use client"
 import { Basket, CaretLeft, DotsThree, Heart, MagnifyingGlass } from "@phosphor-icons/react";
+import { ShoppingCart } from "@phosphor-icons/react/dist/ssr";
 import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent, useState } from "react";
 
@@ -30,7 +31,7 @@ const HeaderNav: FunctionComponent<HeaderNavProps> = ({liked, model, title}) => 
       {model === "like" && <Heart onClick={likeHandler} className={`cursor-pointer ${likesCondition && "liked"}`} size={32} color={likesCondition ? "#ff4242" : "#151514"} weight={likesCondition ? "fill" : "bold"} /> }
       {model === "dot" && <DotsThree className="cursor-pointer" size={32} color="#151514" weight="bold" /> }
       {model === "manify" && <MagnifyingGlass onClick={handleSearch} className="cursor-pointer" size={25} weight="bold" />}
-      {model === "cart" && <Basket className="cursor-pointer" size={32} weight="bold" />}
+      {model === "cart" && <ShoppingCart className="cursor-pointer" size={32} weight="bold" />}
     </div>
   );
 };

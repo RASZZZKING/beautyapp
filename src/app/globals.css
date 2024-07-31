@@ -141,9 +141,9 @@ body {
   }
 }
 .fadeIn {
-  opacity: 0;
-  animation: fadeIn .5s ease-in-out;
-  -webkit-animation: fadeIn .5s ease-in-out;
+  opacity: 1;
+  animation: fadeIn .2s ease-in;
+  -webkit-animation: fadeIn .2s ease-in;
 }
 .fadeIn3 {
   opacity: 0;
@@ -243,4 +243,29 @@ input[type=number] {
 
 .fade-out {
   animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  100% {
+    top: 1.5rem; /* top-6 in tailwind is 1.5rem */
+    opacity: 1;
+  }
+}
+
+.alert-show {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding-left: 1rem; /* equivalent to px-4 */
+  padding-right: 1rem; /* equivalent to px-4 */
+  animation: slideDown 0.3s ease-out forwards;
+  z-index: 10; /* Ensure alert is above other content */
+}
+
+.alert-hide {
+  display: none;
 }

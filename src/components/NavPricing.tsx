@@ -7,7 +7,7 @@ interface NavPricingProps {
 
 const NavPricing: FunctionComponent<NavPricingProps> = ({ totalBiaya }) => {
   return (
-    <div className="flex gap-4 flex-col w-full mt-8 shadow-inner pt-5 rounded-lg px-4 pb-2">
+    <div className="flex z-50 bg-color-gray bottom-0 left-0 gap-4 flex-col w-full shadow-inner rounded-lg p-4 ">
       <div className="font-semibold flex justify-between">
         <p className="opacity-50 text-base">Subtotal</p>
         <div className="flex items-center">

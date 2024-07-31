@@ -11,13 +11,15 @@ const Page: FC<pageProps> = () => {
   const [totalBiaya, setTotalBiaya] = useState(0);
 
   return (
-    <div className="bg-color-primary min-[450px]:p-2 min-[450px]:rounded-2xl min-[450px]:shadow-2xl mh50 hidden-scrollbar min-[450px]:-mt-2">
-      <div className="px-4 pt-7 flex flex-col gap-5">
-        <HeaderNav model="manify" title="Checkout" />
-        <LocationClient />
-        <ProdcutInCart setTotalBiaya={setTotalBiaya} />
+    <div className="bg-color-primary relative  min-[450px]:rounded-2xl min-[450px]:shadow-2xl mh50 hidden-scrollbar min-[450px]:-mt-2">
+      <div className=" mh50 flex flex-col bg-color-placeholder bg-opacity-20">
+        <div className="px-4 pt-7 flex-1 flex flex-col gap-5  min-h-full min-[450px]:px-6 pb-2">
+          <HeaderNav model="manify" title="Checkout" />
+          <LocationClient />
+          <ProdcutInCart setTotalBiaya={setTotalBiaya} />
+        </div>
+        <NavPricing totalBiaya={totalBiaya} />
       </div>
-      <NavPricing totalBiaya={totalBiaya} />
     </div>
   );
 };
