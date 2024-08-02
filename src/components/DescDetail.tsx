@@ -1,8 +1,10 @@
 "use client"
 import { Star } from "@phosphor-icons/react";
 import { FunctionComponent, useState } from "react";
+import Link from "next/link"
 
 interface DescDetailProps {
+  key: number
     title: string
     ratters: number
     rating: number
@@ -10,7 +12,7 @@ interface DescDetailProps {
     desc: string
 }
 
-const DescDetail: FunctionComponent<DescDetailProps> = ({title, desc, rating, ratters, reviewers}) => {
+const DescDetail: FunctionComponent<DescDetailProps> = ({title, desc, rating, ratters, reviewers, key}) => {
   return (
     <>
       {/* title  */}
@@ -25,7 +27,7 @@ const DescDetail: FunctionComponent<DescDetailProps> = ({title, desc, rating, ra
             </p>
           </div>
           <div className="opacity-50">
-            <p className="text-sm font-bold">{reviewers} reviewers</p>
+            <div className="text-sm font-bold">see these <Link className="text-color-main" href={`/reviews/${key}`}>Reviews</Link> product </div>
           </div>
         </div>
       </div>

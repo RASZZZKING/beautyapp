@@ -6,7 +6,7 @@ import TagPricing from "@/components/TagPricing";
 import HeaderCaption from "@/components/utils/HeaderCaption";
 import HeaderNav from "@/components/utils/HeaderNav";
 import { theProduct } from "@/libs/dataData";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 
 interface pageProps {
   params: {
@@ -32,15 +32,15 @@ const Page: FunctionComponent<pageProps> = ({ params }) => {
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemoexpedita corrupti quos Dolore, quibusdam! Quo nostrum obcaecaticumque ipsum";
   
   const sizes = theProduct.data[key]
-  // {
-  //   size: [38, 40, 43, 45, 50, 51, 56, 77, 79, 81, 93, 95],
-  // };
+
+
   return (
     <>
       <div className="covers2 mh50 hidden-scrollbar min-[450px]:rounded-xl min-[450px]:shadow-2xl flex flex-col gap-5 min-[450px]:-mt-2">
         <HeaderNav model="like" title="Product Details" liked={false} />
         <ImageDetail src={theProduct.data[key].imageUrl} />
         <DescDetail
+        key={key}
           title={theProduct.data[key].title}
           rating={theProduct.data[key].ratings.value}
           ratters={theProduct.data[key].ratings.count}
