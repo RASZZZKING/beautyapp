@@ -6,7 +6,8 @@ import TagPricing from "@/components/TagPricing";
 import HeaderCaption from "@/components/utils/HeaderCaption";
 import HeaderNav from "@/components/utils/HeaderNav";
 import { theProduct } from "@/libs/dataData";
-import { FunctionComponent } from "react";
+
+import { FunctionComponent } from "react"; 
 
 interface pageProps {
   params: {
@@ -27,6 +28,7 @@ interface Size {
 
 const Page: FunctionComponent<pageProps> = ({ params }) => {
   const { key } = params;
+ 
 
   const descProdcut =
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemoexpedita corrupti quos Dolore, quibusdam! Quo nostrum obcaecaticumque ipsum";
@@ -40,7 +42,7 @@ const Page: FunctionComponent<pageProps> = ({ params }) => {
         <HeaderNav model="like" title="Product Details" liked={false} />
         <ImageDetail src={theProduct.data[key].imageUrl} />
         <DescDetail
-        key={key}
+        keyz={key}
           title={theProduct.data[key].title}
           rating={theProduct.data[key].ratings.value}
           ratters={theProduct.data[key].ratings.count}
